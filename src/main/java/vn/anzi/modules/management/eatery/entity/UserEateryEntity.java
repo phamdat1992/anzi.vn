@@ -19,9 +19,9 @@ public class UserEateryEntity {
     @Column
     private String name;
     @Column(name="fk_management_user")
-    private long userId;
+    private Long userId;
     @Column(name="fk_management_eatery")
-    private long eateryId;
+    private Long eateryId;
     @Column(name="is_active")
-    private long isActive;
+    private Boolean isActive;
 }

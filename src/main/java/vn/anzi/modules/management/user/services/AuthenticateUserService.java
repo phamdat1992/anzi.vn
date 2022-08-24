@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpCookie;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.WebUtils;
 import vn.anzi.modules.diner.repository.DinerRepository;
 import vn.anzi.modules.management.user.entity.UserEntity;
@@ -29,19 +30,25 @@ public class AuthenticateUserService {
     @Value("${authenticate.user.cookie.id}")
     private String authenticateUserCookieId;
 
-    public UserEntity getUser(String email, HttpServletRequest request) throws Exception {
+    public UserEntity getUserFromCookie(HttpServletRequest request) {
         Cookie authenticateEmail = WebUtils.getCookie(request, this.authenticateUserCookieEmail);
         Cookie id = WebUtils.getCookie(request, this.authenticateUserCookieId);
-
         if (authenticateEmail != null && id != null) {
-            String tempEmail = authenticateEmail.getValue();
-            Long tempId = Long.parseLong(id.getValue());
-            if (tempEmail.equals(email)) {
-                UserEntity user = new UserEntity();
-                user.setEmail(tempEmail);
-                user.setId(tempId);
-                return user;
-            }
+            UserEntity user = new UserEntity();
+            user.setEmail(authenticateEmail.getValue());
+            user.setId(Long.parseLong(id.getValue()));
+
+            return user;
+        }
+
+        return null;
+    }
+
+    public UserEntity getUser(String email, HttpServletRequest request) {
+        UserEntity currentUser = this.getUserFromCookie(request);
+
+        if (currentUser != null && currentUser.getEmail().equals(email)) {
+            return currentUser;
         }
 
         Optional<UserEntity> user;
@@ -53,14 +60,11 @@ public class AuthenticateUserService {
         return user.get();
     }
 
-    private UserEntity createUser(String email) throws Exception {
-        try {
-            UserEntity user = new UserEntity();
-            user.setEmail(email);
-            return userRepository.save(user);
-        } catch (Exception e) {
-            throw new Exception("token is existed");
-        }
+    @Transactional(rollbackFor = Exception.class)
+    private UserEntity createUser(String email) {
+        UserEntity user = new UserEntity();
+        user.setEmail(email);
+        return userRepository.save(user);
     }
 
     public HttpCookie generateTokenCookie(String tokenId, String tokenValue) {

@@ -14,7 +14,7 @@ import vn.anzi.modules.management.user.services.AuthenticateUserService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(path="/user/authenticate")
+@RequestMapping(path="/management/user/authenticate")
 public class AuthenticateUserController {
     @Autowired
     private AuthenticateUserService authenticateService;
