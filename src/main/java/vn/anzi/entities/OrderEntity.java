@@ -1,6 +1,7 @@
 package vn.anzi.entities;
 
 import lombok.Data;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
@@ -10,17 +11,17 @@ import javax.persistence.*;
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     @Column
-    private Long dinner;
+    private int fkDiner;
     @Column
-    private Long table;
+    private int fkManagementTable;
     @Column
-    private Integer order_type;
+    private int fkManagementOrderType;
     @Column
-    private Boolean is_confirmed;
+    private Boolean isConfirmed;
     @Column
-    private Long created_time;
+    private DateTime createdTime;
     @Column
-    private Long updated_time;
+    private DateTime updatedTime;
 }

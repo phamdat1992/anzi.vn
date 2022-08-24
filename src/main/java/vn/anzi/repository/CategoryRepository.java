@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class CategoryRepository extends JpaRepository<CategoryEntity, Integer> {
+public interface CategoryRepository extends JpaRepository<CategoryEntity, Integer> {
     Optional<CategoryEntity> findById(Integer cateId);
-    List<CategoryEntity> getAllByFkEatery(Long eateryId);
+    List<CategoryEntity> getAllByFkEateryId(Integer eateryId);
 }

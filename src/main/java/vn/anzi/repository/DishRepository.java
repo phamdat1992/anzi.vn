@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class DishRepository extends JpaRepository<DishEntity, Long> {
+public interface DishRepository extends JpaRepository<DishEntity, Long> {
     Optional<DishEntity> findById(Long dishId);
-    List<DishEntity> getAllByFkEatery(Long eateryId);
-    List<DishEntity> getAllByFkCate(Long cateId);
+    List<DishEntity> getAllByFkEateryId(Integer eateryId);
+    List<DishEntity> getAllByFkCateId(Integer cateId);
 }

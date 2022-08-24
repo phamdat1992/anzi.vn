@@ -1,6 +1,8 @@
 package vn.anzi.entities;
 
 import lombok.Data;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,11 +16,14 @@ public class DinnerEntity
      */
     @Id
     @Column(length = 1000)
-    private String authen_name; //index
+    private Integer id;
+    @Id
     @Column(length = 1000)
-    private String authen_pass; //null
+    private String authenName; //index
+    @Column(length = 1000)
+    private String authenPass; //null
     @Column
-    private Long created_time;
+    private DateTime createdTime;
     @Column
-    private Long updated_time;
+    private DateTime updatedTime;
 }

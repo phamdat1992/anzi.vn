@@ -1,7 +1,9 @@
 package vn.anzi.entities;
 
 import lombok.Data;
+import org.joda.time.DateTime;
 
+import javax.mail.search.DateTerm;
 import javax.persistence.*;
 
 @Entity
@@ -10,11 +12,12 @@ import javax.persistence.*;
 public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
+    @Id
     @Column(length = 1000)
-    private String file_name;
+    private String fileName;
     @Column
-    private Long created_time;
+    private DateTime createdTime;
     @Column
-    private Long updated_time;
+    private DateTime updatedTime;
 }

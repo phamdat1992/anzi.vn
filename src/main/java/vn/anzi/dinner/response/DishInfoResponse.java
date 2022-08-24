@@ -9,10 +9,10 @@ public class DishInfoResponse {
     private ArrayList<Integer> categoryId;
     private ArrayList<String> categoryName;
 
-    private ArrayList<Long> dishId;
+    private ArrayList<Integer> dishId;
     private ArrayList<String> dishName;
     private ArrayList<String> dishImage;
-    private ArrayList<Double> dishPrice;
+    private ArrayList<Float> dishPrice;
     private ArrayList<Integer> dishCate;
 
     private ArrayList<Integer> historyDishId;

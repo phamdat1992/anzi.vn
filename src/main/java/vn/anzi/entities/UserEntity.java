@@ -1,6 +1,7 @@
 package vn.anzi.entities;
 
 import lombok.Data;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
@@ -10,11 +11,12 @@ import javax.persistence.*;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
+    @Id
     @Column(length = 1000)
     private String email;
     @Column
-    private Long created_time;
+    private DateTime created_time;
     @Column
-    private Long updated_time;
+    private DateTime updated_time;
 }

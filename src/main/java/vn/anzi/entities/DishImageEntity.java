@@ -1,6 +1,7 @@
 package vn.anzi.entities;
 
 import lombok.Data;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
@@ -10,15 +11,15 @@ import javax.persistence.*;
 public class DishImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     @Column
-    private Long dish;
+    private int fkManagementDish;
     @Column
-    private Integer image;
+    private int fkManagementImage;
     @Column
-    private Boolean is_active;
+    private Boolean isActive;
     @Column
-    private Long created_time;
+    private DateTime createdTime;
     @Column
-    private Long updated_time;
+    private DateTime updatedTime;
 }

@@ -8,6 +8,6 @@ import vn.anzi.entities.ImageEntity;
 import java.util.Optional;
 
 @Repository
-public class ImageRepository extends JpaRepository<ImageEntity, Integer> {
-    ImageEntity findImageById(Integer imageId);
+public interface ImageRepository extends JpaRepository<ImageEntity, Integer> {
+    ImageEntity findImageById(Long imageId);
 }

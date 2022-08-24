@@ -1,6 +1,7 @@
 package vn.anzi.entities;
 
 import lombok.Data;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
@@ -10,15 +11,15 @@ import javax.persistence.*;
 public class TableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @Column(length = 1000)
     private String name;
     @Column(length = 1000)
     private String location;
     @Column
-    private Integer eatery;
+    private int fkManagementEatery;
     @Column
-    private Long created_time;
+    private DateTime createdTime;
     @Column
-    private Long updated_time;
+    private DateTime updatedTime;
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 @Data
 public class OrderRequest {
     private int orderType;
-    private long tableId;
+    private int tableId;
     private int eateryId;
 
     private ArrayList<Integer> orderDishId;
