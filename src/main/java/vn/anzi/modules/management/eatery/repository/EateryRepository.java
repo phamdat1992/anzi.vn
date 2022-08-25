@@ -9,7 +9,6 @@ import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 
 import java.util.List;
 
-
 @Repository
 public interface EateryRepository extends JpaRepository<EateryEntity, Long> {
     @Query(value = "select management_eatery.id as id, management_eatery.name as name, management_eatery.address as address " +

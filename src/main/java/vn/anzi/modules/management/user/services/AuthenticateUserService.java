@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.WebUtils;
 import vn.anzi.modules.diner.repository.DinerRepository;
+import vn.anzi.modules.management.role.entity.UserEateryRoleEntity;
+import vn.anzi.modules.management.role.model.UserRoleModel;
+import vn.anzi.modules.management.role.services.RoleService;
 import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.repository.UserRepository;
 
@@ -18,6 +21,10 @@ import java.util.Optional;
 
 @Service
 public class AuthenticateUserService {
+
+    @Autowired
+    private RoleService roleService;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -75,5 +82,22 @@ public class AuthenticateUserService {
                 .secure(true)
                 .path("/api")
                 .build();
+    }
+
+    public Boolean isManager(UserEntity user, Long eateryId) {
+        if (user == null) {
+            return false;
+        }
+
+        UserEateryRoleEntity userEateryRoleEntity = roleService.getUserEateryRoleEntity(user.getId(), eateryId);
+        if (userEateryRoleEntity == null) {
+            return false;
+        }
+
+        if (userEateryRoleEntity.getRoleId() != (long) UserRoleModel.MANAGER.getValue()) {
+            return false;
+        }
+
+        return true;
     }
 }

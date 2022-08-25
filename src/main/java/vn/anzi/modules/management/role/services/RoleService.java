@@ -31,4 +31,9 @@ public class RoleService {
         newUserEntityRole.setIsActive(true);
         return userEateryRoleRepository.save(newUserEntityRole);
     }
+
+    public UserEateryRoleEntity getUserEateryRoleEntity(Long userId, Long eateryId) {
+        return userEateryRoleRepository.findByUserIdAndEateryId(userId, eateryId).orElse(null);
+
+    }
 }
