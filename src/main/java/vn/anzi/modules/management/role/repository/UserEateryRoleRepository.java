@@ -12,10 +12,10 @@ import java.util.Optional;
 @Repository
 public interface UserEateryRoleRepository extends JpaRepository<UserEateryRoleEntity, Long> {
     @Query(value = "select * " +
-            "from management_user_eatery_role" +
-            "where fk_management_user_eatery = :userEateryId " +
-            "   and (is_active = 1) " +
-            "limit 1",
+            "from management_user_eatery_role " +
+            "where fk_management_user_eatery=:userEateryId " +
+            "and is_active='1' " +
+            "limit 1;",
             nativeQuery = true
     )
     Optional<UserEateryRoleEntity> findByUserEateryId(Long userEateryId);

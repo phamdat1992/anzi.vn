@@ -3,14 +3,12 @@ package vn.anzi.modules.management.eatery.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.anzi.modules.management.eatery.entity.EateryEntity;
-import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
+import vn.anzi.modules.management.eatery.entity.*;
 import vn.anzi.modules.management.eatery.repository.EateryRepository;
 import vn.anzi.modules.management.eatery.repository.UserEateryRepository;
 import vn.anzi.modules.management.role.model.UserRoleModel;
 import vn.anzi.modules.management.role.services.RoleService;
 import vn.anzi.modules.management.user.entity.UserEntity;
-import vn.anzi.modules.management.user.repository.UserRepository;
 
 import java.util.List;
 
@@ -22,21 +20,18 @@ public class EateryService {
     @Autowired
     private UserEateryRepository userEateryRepository;
 
-    @Autowired
-    private RoleService roleService;
-
     @Transactional(rollbackFor = Exception.class)
     public EateryEntity createEatery(EateryEntity eatery, UserEntity userEntity) {
-        EateryEntity newEntity = eateryRepository.save(eatery);
+        return eateryRepository.save(eatery);
+    }
 
+    @Transactional(rollbackFor = Exception.class)
+    public UserEateryEntity createUserEatery(EateryEntity eateryEntity, UserEntity userEntity) {
         UserEateryEntity userEateryEntity = new UserEateryEntity();
-        userEateryEntity.setEateryId(newEntity.getId());
+        userEateryEntity.setEateryId(eateryEntity.getId());
         userEateryEntity.setUserId(userEntity.getId());
-        userEateryEntity = userEateryRepository.save(userEateryEntity);
-
-        roleService.updateUserRole(userEateryEntity.getEateryId(), UserRoleModel.MANAGER);
-
-        return newEntity;
+        userEateryEntity.setIsActive(true);
+        return userEateryRepository.save(userEateryEntity);
     }
 
     public List<EateryEntity> getAllEateryByUserId(long userId) {
