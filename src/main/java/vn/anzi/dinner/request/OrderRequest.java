@@ -1,4 +1,4 @@
-package vn.anzi.dinner.request;
+package vn.anzi.diner.request;
 
 import lombok.Data;
 

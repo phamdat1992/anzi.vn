@@ -1,21 +1,21 @@
-package vn.anzi.dinner.service;
-
-import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import vn.anzi.dinner.request.DishInfoRequest;
-import vn.anzi.dinner.request.OrderRequest;
-import vn.anzi.dinner.response.DishInfoResponse;
-import vn.anzi.entities.*;
-import vn.anzi.repository.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@Service
-public class DinnerOrderService {
+//package vn.anzi.diner.service;
+//
+//import org.joda.time.DateTime;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.stereotype.Service;
+//import vn.anzi.diner.request.DishInfoRequest;
+//import vn.anzi.diner.request.OrderRequest;
+//import vn.anzi.diner.response.DishInfoResponse;
+//import vn.anzi.entities.*;
+//import vn.anzi.repository.*;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//@Service
+//public class DinerOrderService {
 //    @Autowired
 //    private TableRepository tableRepository;
 //    @Autowired
@@ -32,7 +32,7 @@ public class DinnerOrderService {
 //    private OrderDishRepository orderDishRepository;
 //
 //    public DishInfoResponse getDishedInfo(DishInfoRequest dishInfoRequest) {
-//        long dinnerId = dishInfoRequest.getDinnerId();
+//        long dinerId = dishInfoRequest.getDinerId();
 //        int eateryId = dishInfoRequest.getEateryId();
 //
 //        //TODO: ? new list?
@@ -56,11 +56,11 @@ public class DinnerOrderService {
 //            }
 //        }
 //
-//        getHistoryOrder(dinnerId, eateryId, dishInfoResponse);
+//        getHistoryOrder(dinerId, eateryId, dishInfoResponse);
 //        return dishInfoResponse;
 //    }
 //
-//    private void getHistoryOrder(long dinnerId, int eateryId, DishInfoResponse dishInfoResponse) {
+//    private void getHistoryOrder(long dinerId, int eateryId, DishInfoResponse dishInfoResponse) {
 //
 //    }
 //
@@ -74,7 +74,7 @@ public class DinnerOrderService {
 //        return imageUrl;
 //    }
 //
-//    public ResponseEntity<Void> order(int dinnerId, OrderRequest orderRequest) {
+//    public ResponseEntity<Void> order(int dinerId, OrderRequest orderRequest) {
 //        int orderType = orderRequest.getOrderType();
 //        int tableId = orderRequest.getTableId();
 //        int eateryId = orderRequest.getEateryId();
@@ -82,7 +82,7 @@ public class DinnerOrderService {
 //        ArrayList<Integer> quantityList = orderRequest.getQuantity();
 //
 //        //TODO: check dish quantity
-//        OrderEntity orderEntity = createNewOrderEntity(dinnerId, tableId, orderType);
+//        OrderEntity orderEntity = createNewOrderEntity(dinerId, tableId, orderType);
 //        for (int i = 0; i < orderDishList.size(); i++)
 //            createNewDishInOrder(orderEntity, orderDishList.get(i), quantityList.get(i));
 //
@@ -101,9 +101,9 @@ public class DinnerOrderService {
 //        orderDishRepository.save(orderDishEntity);
 //    }
 //
-//    private OrderEntity createNewOrderEntity(int dinnerId, int tableId, int orderType) {
+//    private OrderEntity createNewOrderEntity(int dinerId, int tableId, int orderType) {
 //        OrderEntity orderEntity = new OrderEntity();
-//        orderEntity.setFkDiner(dinnerId);
+//        orderEntity.setFkDiner(dinerId);
 //        orderEntity.setFkManagementTable(tableId);
 //        orderEntity.setFkManagementOrderType(orderType);
 //        orderEntity.setIsConfirmed(false);
@@ -113,4 +113,4 @@ public class DinnerOrderService {
 //        orderRepository.save(orderEntity);
 //        return orderEntity;
 //    }
-}
+//}

@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Table(name = "management_table")
 @Data
 public class TableEntity {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

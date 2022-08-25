@@ -1,6 +1,6 @@
-package vn.anzi.dinner.config;
+package vn.anzi.diner.config;
 
-public class DinnerAuthenStatusDefine {
+public class DinerAuthenStatusDefine {
     public static byte SUCCESS = 0;
     public static byte EXPIRED = 1;
 }

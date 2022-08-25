@@ -1,4 +1,4 @@
-package vn.anzi.dinner.response;
+package vn.anzi.diner.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -9,10 +9,11 @@ import javax.persistence.*;
 @Table(name = "management_user")
 @Data
 public class UserEntity {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Id
     @Column(length = 1000)
     private String email;
     @Column

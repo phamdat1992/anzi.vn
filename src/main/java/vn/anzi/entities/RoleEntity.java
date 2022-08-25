@@ -9,13 +9,15 @@ import javax.persistence.*;
 @Table(name = "management_role")
 @Data
 public class RoleEntity {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(length = 1000)
     private String name;
     @Column
-    private DateTime created_time;
+    private DateTime createdTime;
     @Column
-    private DateTime updated_time;
+    private DateTime updatedTime;
 }
