@@ -52,6 +52,9 @@ public class EateryController {
                     .build();
         }
 
-        return null;
+        GetAllEateryResponseDTO eatery = new GetAllEateryResponseDTO();
+        eatery.setEatery(eateryService.getAllEateryByUserId(user.getId()));
+
+        return ResponseEntity.ok().body(eatery);
     }
 }

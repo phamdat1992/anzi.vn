@@ -12,6 +12,8 @@ import vn.anzi.modules.management.role.services.RoleService;
 import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class EateryService {
     @Autowired
@@ -35,5 +37,9 @@ public class EateryService {
         roleService.updateUserRole(userEateryEntity.getEateryId(), UserRoleModel.MANAGER);
 
         return newEntity;
+    }
+
+    public List<EateryEntity> getAllEateryByUserId(long userId) {
+        return eateryRepository.getAllEateryByUserId(userId);
     }
 }
