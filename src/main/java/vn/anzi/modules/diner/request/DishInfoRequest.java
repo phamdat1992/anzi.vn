@@ -1,4 +1,4 @@
-package vn.anzi.diner.request;
+package vn.anzi.modules.diner.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 public class DishInfoRequest {
     private long dinerId;
     private long tableId;
-    private int eateryId;
+    private long eateryId;
 }

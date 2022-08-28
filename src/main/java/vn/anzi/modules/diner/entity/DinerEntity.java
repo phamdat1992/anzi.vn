@@ -14,13 +14,7 @@ public class DinerEntity
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
     @Column(name="authen_name")
     private String authenName; //index
-    @Column(name="authen_pass")
-    private String authenPass; //null
-    @Column(name="create_time")
-    private DateTime createdTime;
-    @Column(name="updated_time")
-    private DateTime updatedTime;
 }

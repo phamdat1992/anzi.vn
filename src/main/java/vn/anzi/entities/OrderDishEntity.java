@@ -14,9 +14,9 @@ public class OrderDishEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column(name = "fk_management_order")
     private int fkManagementOrder;
-    @Column
+    @Column(name = "fk_management_dish")
     private int fkManagementDish;
     @Column
     private int quantity;

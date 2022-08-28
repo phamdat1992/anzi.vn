@@ -13,18 +13,18 @@ public class DishEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column(length = 1000)
     private String name;
     @Column
     private float price;
     @Column(length = 1000)
     private String code; //allow null
-    @Column
+    @Column(name = "fk_management_eatery")
     private int eatery;
-    @Column
+    @Column(name = "fk_management_category")
     private int category;
-    @Column
+    @Column(name = "fk_disk_status")
     private int dishStatus;
     @Column
     private DateTime created_time;
