@@ -1,13 +1,13 @@
-package vn.anzi.modules.management.eatery.entity;
+package vn.anzi.modules.management.category.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "management_user_eatery")
+@Table(name = "management_category")
 @Data
-public class UserEateryEntity {
+public class CategoryEntity {
     /**
      *
      */
@@ -18,8 +18,6 @@ public class UserEateryEntity {
     private Long id;
     @Column
     private String name;
-    @Column(name="fk_management_user")
-    private Long userId;
     @Column(name="fk_management_eatery")
     private Long eateryId;
     @Column(name="is_active")
