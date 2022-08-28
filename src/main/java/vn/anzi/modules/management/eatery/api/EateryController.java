@@ -41,7 +41,7 @@ public class EateryController {
         EateryEntity eater = new EateryEntity();
         eater.setAddress(newEateryRequestDTO.getAddress());
         eater.setName(newEateryRequestDTO.getName());
-        eater = eateryService.createEatery(eater, user);
+        eater = eateryService.createEatery(eater);
         UserEateryEntity userEateryEntity = eateryService.createUserEatery(eater, user);
         roleService.updateUserRole(userEateryEntity.getId(), UserRoleModel.MANAGER);
 

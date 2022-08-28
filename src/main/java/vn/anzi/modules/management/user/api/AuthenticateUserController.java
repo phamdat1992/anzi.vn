@@ -26,6 +26,7 @@ public class AuthenticateUserController {
     private String authenticateUserCookieId;
 
     @GetMapping("")
+    // @PostMapping("")
     // public ResponseEntity<Void> authenticateUser(@RequestBody AuthenticateRequestDTO authenticate, HttpServletRequest request) {
     public ResponseEntity<Void> authenticateUser(HttpServletRequest request) {
         try {

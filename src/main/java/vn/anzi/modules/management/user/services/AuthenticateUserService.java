@@ -52,23 +52,41 @@ public class AuthenticateUserService {
     }
 
     public UserEntity getUser(String email, HttpServletRequest request) {
+        UserEntity user = this.getUserFromCookieByEmail(email, request);
+        if (user != null) {
+            return user;
+        }
+
+        user = this.getUserFromDbByEmail(email);
+        if (user != null) {
+            return user;
+        }
+
+        return this.createUser(email);
+    }
+
+    public UserEntity getUserFromCookieByEmail(String email, HttpServletRequest request) {
         UserEntity currentUser = this.getUserFromCookie(request);
 
         if (currentUser != null && currentUser.getEmail().equals(email)) {
             return currentUser;
         }
 
+        return null;
+    }
+
+    public UserEntity getUserFromDbByEmail(String email) {
         Optional<UserEntity> user;
         user = userRepository.findByEmail(email).stream().findFirst();
         if (user.isEmpty()) {
-            return createUser(email);
+            return null;
         }
 
         return user.get();
     }
 
     @Transactional(rollbackFor = Exception.class)
-    private UserEntity createUser(String email) {
+    public UserEntity createUser(String email) {
         UserEntity user = new UserEntity();
         user.setEmail(email);
         return userRepository.save(user);
@@ -94,10 +112,6 @@ public class AuthenticateUserService {
             return false;
         }
 
-        if (userEateryRoleEntity.getRoleId() != (long) UserRoleModel.MANAGER.getValue()) {
-            return false;
-        }
-
-        return true;
+        return userEateryRoleEntity.getRoleId() == (long) UserRoleModel.MANAGER.getValue();
     }
 }

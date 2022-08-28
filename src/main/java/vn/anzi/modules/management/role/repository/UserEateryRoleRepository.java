@@ -35,4 +35,12 @@ public interface UserEateryRoleRepository extends JpaRepository<UserEateryRoleEn
             nativeQuery = true
     )
     Optional<UserEateryRoleEntity> findByUserIdAndEateryId(Long userId, Long eateryId);
+
+    @Query(value = "update management_user_eatery_role " +
+            "set is_active=0 " +
+            "where fk_management_user_eatery:=userEateryId " +
+            "and is_active=1;",
+            nativeQuery = true
+    )
+    void removeUserByUserEateryId(Long userEateryId);
 }

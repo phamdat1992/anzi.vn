@@ -21,7 +21,7 @@ public class EateryService {
     private UserEateryRepository userEateryRepository;
 
     @Transactional(rollbackFor = Exception.class)
-    public EateryEntity createEatery(EateryEntity eatery, UserEntity userEntity) {
+    public EateryEntity createEatery(EateryEntity eatery) {
         return eateryRepository.save(eatery);
     }
 
@@ -36,5 +36,10 @@ public class EateryService {
 
     public List<EateryEntity> getAllEateryByUserId(long userId) {
         return eateryRepository.getAllEateryByUserId(userId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void removeUserByUserEateryId(Long userEateryId, Long eateryId) {
+        userEateryRepository.removeUserByUserEateryId(userEateryId, eateryId);
     }
 }
