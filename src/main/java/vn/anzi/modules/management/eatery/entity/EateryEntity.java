@@ -1,13 +1,13 @@
-package vn.anzi.modules.management.user.entity;
+package vn.anzi.modules.management.eatery.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "")
+@Table(name = "management_eatery")
 @Data
-public class StaffEntity {
+public class EateryEntity {
     /**
      *
      */
@@ -16,10 +16,8 @@ public class StaffEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="email")
-    private String email;
     @Column
     private String name;
-    @Column(name="fk_management_role")
-    private Long roleId;
+    @Column
+    private String address;
 }

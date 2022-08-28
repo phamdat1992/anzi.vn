@@ -3,7 +3,6 @@ package vn.anzi.modules.management.user.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import vn.anzi.modules.management.eatery.entity.EateryEntity;
 import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
@@ -15,9 +14,7 @@ import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.repository.StaffRepository;
 import vn.anzi.modules.management.user.repository.UserRepository;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StaffService {

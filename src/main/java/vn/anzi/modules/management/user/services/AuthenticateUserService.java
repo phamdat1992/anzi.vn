@@ -8,7 +8,6 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.WebUtils;
-import vn.anzi.modules.diner.repository.DinerRepository;
 import vn.anzi.modules.management.role.entity.UserEateryRoleEntity;
 import vn.anzi.modules.management.role.model.UserRoleModel;
 import vn.anzi.modules.management.role.services.RoleService;

@@ -2,7 +2,7 @@
 //
 //import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.stereotype.Repository;
-//import vn.anzi.entities.DinerEntity;
+//import vn.anzi.modules.dinner.entity.DinerEntity;
 //import vn.anzi.entities.OrderEntity;
 //
 //import java.util.Optional;
