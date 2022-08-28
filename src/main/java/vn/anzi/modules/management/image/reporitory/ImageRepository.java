@@ -1,11 +1,8 @@
-package vn.anzi.modules.diner.repository;
+package vn.anzi.modules.management.image.reporitory;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import vn.anzi.entities.DishImageEntity;
-import vn.anzi.entities.ImageEntity;
-
-import java.util.Optional;
+import vn.anzi.modules.management.image.entity.ImageEntity;
 
 @Repository
 public interface ImageRepository extends JpaRepository<ImageEntity, Integer> {

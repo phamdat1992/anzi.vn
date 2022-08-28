@@ -11,10 +11,16 @@ import vn.anzi.modules.diner.request.DishInfoRequest;
 import vn.anzi.modules.diner.request.OrderRequest;
 import vn.anzi.modules.diner.response.DishHistoryResponse;
 import vn.anzi.modules.diner.response.DishInfoResponse;
-import vn.anzi.entities.*;
-import vn.anzi.modules.diner.repository.*;
 import vn.anzi.modules.management.category.entity.CategoryEntity;
 import vn.anzi.modules.management.category.repository.CategoryRepository;
+import vn.anzi.modules.management.dish.entity.DishEntity;
+import vn.anzi.modules.management.dish.repository.DishRepository;
+import vn.anzi.modules.management.image.reporitory.DishImageRepository;
+import vn.anzi.modules.management.image.reporitory.ImageRepository;
+import vn.anzi.modules.management.order.entity.OrderDishEntity;
+import vn.anzi.modules.management.order.entity.OrderEntity;
+import vn.anzi.modules.management.order.repository.OrderDishRepository;
+import vn.anzi.modules.management.order.repository.OrderRepository;
 import vn.anzi.modules.management.table.repository.TableRepository;
 
 import java.util.ArrayList;

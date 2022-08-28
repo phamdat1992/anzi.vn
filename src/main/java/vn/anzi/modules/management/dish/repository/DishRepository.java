@@ -1,10 +1,10 @@
-package vn.anzi.modules.diner.repository;
+package vn.anzi.modules.management.dish.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import vn.anzi.constant.DishStatus;
-import vn.anzi.entities.DishEntity;
+import vn.anzi.modules.management.dish.entity.DishEntity;
 import java.util.List;
 
 @Repository

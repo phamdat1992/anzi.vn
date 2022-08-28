@@ -1,4 +1,4 @@
-package vn.anzi.entities;
+package vn.anzi.modules.management.dish.entity;
 
 import lombok.Data;
 import org.joda.time.DateTime;
