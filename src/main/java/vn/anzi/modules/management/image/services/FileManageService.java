@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
 
@@ -81,18 +83,11 @@ public class FileManageService {
 		return keyName;
 	}
 
-	/*
-	public FileBase64DTO convertBase64WordToPDF(FileBase64DTO wordBase64) throws IOException {
-		byte[] fileData = Base64.getDecoder().decode(wordBase64.getData());
-		InputStream inFile = new ByteArrayInputStream(fileData);
-		XWPFDocument doc = new XWPFDocument(inFile);
-		PdfOptions pdfOptions = PdfOptions.create();
-		OutputStream binaryPDF = new ByteArrayOutputStream();
-		PdfConverter.getInstance().convert(doc, binaryPDF, pdfOptions);
-
-		try (ByteArrayOutputStream outData = (ByteArrayOutputStream) binaryPDF) {
-			String base64PDF = Base64.getEncoder().encodeToString(outData.toByteArray());
-			return new FileBase64DTO(base64PDF);
-		}
-	}*/
+	public byte[] pngBytesToJpgBytes(byte[] pngBytes) throws IOException {
+		ByteArrayInputStream baIns = new ByteArrayInputStream(pngBytes);
+		BufferedImage bufferedImage = ImageIO.read(baIns);
+		ByteArrayOutputStream baOuts = new ByteArrayOutputStream();
+		ImageIO.write(bufferedImage, "JPG", baOuts);
+		return baOuts.toByteArray();
+	}
 }
