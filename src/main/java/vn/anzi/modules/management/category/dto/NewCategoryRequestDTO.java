@@ -16,5 +16,5 @@ public class NewCategoryRequestDTO {
     private String name;
     @NotNull
     @NotEmpty
-    private long eateryId;
+    private Long eateryId;
 }

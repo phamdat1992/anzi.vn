@@ -13,5 +13,5 @@ import javax.validation.constraints.NotNull;
 public class DishInfoRequestDTO {
     @NotNull
     @NotEmpty
-    private long eateryId;
+    private Long eateryId;
 }
