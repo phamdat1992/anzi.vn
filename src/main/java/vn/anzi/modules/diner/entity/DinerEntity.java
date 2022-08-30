@@ -16,5 +16,5 @@ public class DinerEntity
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name="authen_name")
-    private String authenName; //index
+    private String authenticateName; //index
 }
