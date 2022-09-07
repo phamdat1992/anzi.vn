@@ -6,6 +6,6 @@ import vn.anzi.modules.diner.entity.DinerEntity;
 import java.util.Optional;
 
 @Repository
-public interface DinerRepository extends JpaRepository<DinerEntity, Integer> {
-    Optional<DinerEntity> findByAuthenName(String authenName);
+public interface DinerRepository extends JpaRepository<DinerEntity, Long> {
+    Optional<DinerEntity> findByAuthenticateName(String authenName);
 }
