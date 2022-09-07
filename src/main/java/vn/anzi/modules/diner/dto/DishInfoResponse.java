@@ -1,10 +1,14 @@
-package vn.anzi.modules.diner.response;
+package vn.anzi.modules.diner.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DishInfoResponse {
     private ArrayList<Long> categoryId;
     private ArrayList<String> categoryName;

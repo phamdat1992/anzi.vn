@@ -17,5 +17,5 @@ public interface DishRepository extends JpaRepository<DishEntity, Long> {
             ";",
             nativeQuery = true
     )
-    List<DishEntity> getAllByFkCateIdAndEateryId(long cateId, long eateryId);
+    List<DishEntity> getAllByFkCateIdAndEateryId(Long cateId, Long eateryId);
 }

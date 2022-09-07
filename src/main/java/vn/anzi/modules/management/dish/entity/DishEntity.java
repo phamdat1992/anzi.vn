@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Table(name = "management_dish")
 @Data
 public class DishEntity {
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(length = 1000)
     private String name;
     @Column

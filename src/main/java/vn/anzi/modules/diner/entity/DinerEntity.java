@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Data
 public class DinerEntity
 {
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name="authen_name")
     private String authenticateName; //index
 }

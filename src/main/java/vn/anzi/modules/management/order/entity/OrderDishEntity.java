@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "management_order_dish")
 @Data
 public class OrderDishEntity {
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

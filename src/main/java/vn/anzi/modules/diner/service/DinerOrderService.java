@@ -2,15 +2,9 @@ package vn.anzi.modules.diner.service;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.anzi.modules.diner.request.DishHistoryRequest;
-import vn.anzi.modules.diner.request.DishInfoRequest;
-import vn.anzi.modules.diner.request.OrderRequest;
-import vn.anzi.modules.diner.response.DishHistoryResponse;
-import vn.anzi.modules.diner.response.DishInfoResponse;
+import vn.anzi.modules.diner.dto.*;
 import vn.anzi.modules.management.category.entity.CategoryEntity;
 import vn.anzi.modules.management.category.repository.CategoryRepository;
 import vn.anzi.modules.management.dish.entity.DishEntity;
@@ -44,13 +38,13 @@ public class DinerOrderService {
     private OrderDishRepository orderDishRepository;
 
     public DishInfoResponse getDishedInfo(DishInfoRequest dishInfoRequest) {
-        long dinerId = dishInfoRequest.getDinerId();
-        long eateryId = dishInfoRequest.getEateryId();
+        Long dinerId = 1L;
+        Long eateryId = dishInfoRequest.getEateryId();
 
         DishInfoResponse dishInfoResponse = new DishInfoResponse();
         List<CategoryEntity> categoryEntityList = categoryRepository.getAllByEateryId(eateryId);
         for (CategoryEntity cate: categoryEntityList) {
-            long cateId = cate.getId();
+            Long cateId = cate.getId();
             String cateName = cate.getName();
             dishInfoResponse.getCategoryId().add(cateId);
             dishInfoResponse.getCategoryName().add(cateName);
@@ -69,7 +63,7 @@ public class DinerOrderService {
         return dishInfoResponse;
     }
 
-    private void getHistoryOrder(long dinerId, long eateryId, DishInfoResponse dishInfoResponse) {
+    private void getHistoryOrder(Long dinerId, long eateryId, DishInfoResponse dishInfoResponse) {
         //TODO: history order
     }
 
@@ -85,7 +79,7 @@ public class DinerOrderService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public ResponseEntity<Void> order(OrderRequest orderRequest) {
+    public void order(OrderRequest orderRequest) {
         int dinerId = orderRequest.getDinerId();
         int orderType = orderRequest.getOrderType();
         int tableId = orderRequest.getTableId();
@@ -97,9 +91,6 @@ public class DinerOrderService {
         OrderEntity orderEntity = createNewOrderEntity(dinerId, tableId, orderType);
         for (int i = 0; i < orderDishList.size(); i++)
             createNewDishInOrder(orderEntity, orderDishList.get(i), quantityList.get(i));
-
-        return ResponseEntity.status(HttpStatus.OK)
-                .build();
     }
 
     private void createNewDishInOrder(OrderEntity orderEntity, int dishId, int quantity) {

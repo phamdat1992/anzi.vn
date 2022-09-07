@@ -34,7 +34,7 @@ public class EateryService {
         return userEateryRepository.save(userEateryEntity);
     }
 
-    public List<EateryEntity> getAllEateryByUserId(long userId) {
+    public List<EateryEntity> getAllEateryByUserId(Long userId) {
         return eateryRepository.getAllEateryByUserId(userId);
     }
 

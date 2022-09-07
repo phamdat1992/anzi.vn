@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
-    List<CategoryEntity> getAllByEateryId(long cateId);
+    List<CategoryEntity> getAllByEateryId(Long cateId);
 }
