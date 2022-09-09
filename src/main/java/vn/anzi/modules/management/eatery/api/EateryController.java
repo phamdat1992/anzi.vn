@@ -10,9 +10,7 @@ import vn.anzi.modules.management.eatery.dto.NewEateryResponseDTO;
 import vn.anzi.modules.management.eatery.entity.EateryEntity;
 import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
-import vn.anzi.modules.management.role.model.UserRoleModel;
-import vn.anzi.modules.management.role.services.RoleService;
-import vn.anzi.modules.management.user.dto.AuthenticateRequestDTO;
+import vn.anzi.modules.management.role.model.RoleModel;
 import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.services.AuthenticateUserService;
 
@@ -23,9 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 public class EateryController {
     @Autowired
     private EateryService eateryService;
-
-    @Autowired
-    private RoleService roleService;
 
     @Autowired
     private AuthenticateUserService authenticateUserService;
@@ -42,8 +37,7 @@ public class EateryController {
         eater.setAddress(newEateryRequestDTO.getAddress());
         eater.setName(newEateryRequestDTO.getName());
         eater = eateryService.createEatery(eater);
-        UserEateryEntity userEateryEntity = eateryService.createUserEatery(eater, user);
-        roleService.updateUserRole(userEateryEntity.getId(), UserRoleModel.MANAGER);
+        UserEateryEntity userEateryEntity = eateryService.createUserEatery(eater, user, RoleModel.MANAGER.getValue());
 
         NewEateryResponseDTO newEateryResponseDTO = new NewEateryResponseDTO();
         newEateryResponseDTO.setId(eater.getId());

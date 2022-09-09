@@ -10,8 +10,14 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllTableRequestDTO {
+public class UpdateTableRequestDTO {
     @NotNull
     @NotEmpty
-    private Long eateryId;
+    private Long id;
+    @NotNull
+    @NotEmpty
+    private String name;
+    @NotNull
+    @NotEmpty
+    private String location;
 }

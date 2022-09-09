@@ -45,10 +45,10 @@ public class AuthenticateDinerService {
 
     public HttpCookie generateTokenCookie(String tokenId, String tokenValue) {
         return ResponseCookie.from(tokenId, tokenValue)
-                .httpOnly(true)
+                //.httpOnly(true)
+                //.sameSite("strict")
+                //.secure(true)
                 .maxAge(Integer.parseInt(this.authenticateTokenTimeLiveInSecond))
-                .sameSite("strict")
-                .secure(true)
                 .path("/api")
                 .build();
     }

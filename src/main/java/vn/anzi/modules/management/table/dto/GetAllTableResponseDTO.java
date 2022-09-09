@@ -11,5 +11,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllTableResponseDTO {
-    private List<TableEntity> table;
+    private List<TableEntity> tables;
 }

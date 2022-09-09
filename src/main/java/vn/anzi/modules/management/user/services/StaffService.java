@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import vn.anzi.modules.management.eatery.entity.EateryEntity;
 import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
-import vn.anzi.modules.management.role.entity.UserEateryRoleEntity;
-import vn.anzi.modules.management.role.services.RoleService;
 import vn.anzi.modules.management.user.dto.NewStaffRequestDTO;
 import vn.anzi.modules.management.user.entity.StaffEntity;
 import vn.anzi.modules.management.user.entity.UserEntity;
@@ -28,9 +26,6 @@ public class StaffService {
     private AuthenticateUserService authenticateUserService;
 
     @Autowired
-    private RoleService roleService;
-
-    @Autowired
     private EateryService eateryService;
 
     public List<StaffEntity> getAllStaffByEateryId(Long eateryId) {
@@ -45,14 +40,7 @@ public class StaffService {
 
         EateryEntity eateryEntity = new EateryEntity();
         eateryEntity.setId(newStaffRequestDTO.getEateryId());
-        UserEateryEntity userEateryEntity = eateryService.createUserEatery(eateryEntity, newStaffUser);
-
-        UserEateryRoleEntity newUserEntityRole = new UserEateryRoleEntity();
-        newUserEntityRole.setRoleId(newStaffRequestDTO.getRoleId());
-        newUserEntityRole.setUserEateryId(userEateryEntity.getId());
-        newUserEntityRole.setIsActive(true);
-
-        roleService.createUserRole(newUserEntityRole);
+        UserEateryEntity userEateryEntity = eateryService.createUserEatery(eateryEntity, newStaffUser, newStaffRequestDTO.getRoleId());
 
         return userEateryEntity;
     }

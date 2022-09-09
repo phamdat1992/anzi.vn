@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import vn.anzi.modules.management.eatery.repository.EateryRepository;
 import vn.anzi.modules.management.table.dto.DeleteTableRequestDTO;
 import vn.anzi.modules.management.table.dto.NewTableRequestDTO;
+import vn.anzi.modules.management.table.dto.UpdateTableRequestDTO;
 import vn.anzi.modules.management.table.entity.TableEntity;
 import vn.anzi.modules.management.table.repository.TableRepository;
 
@@ -29,13 +30,15 @@ public class TableService {
 
     @Transactional(rollbackFor = Exception.class)
     public void deleteTable(DeleteTableRequestDTO table) {
-        TableEntity deleteTable = new TableEntity();
-        deleteTable.setId(table.getTableId());
-        deleteTable.setIsActive(false);
-        tableRepository.save(deleteTable);
+        tableRepository.deleteTable(table.getId());
     }
 
     public List<TableEntity> getAllTableByEateryId(Long eateryId) {
         return tableRepository.getAllTableByEateryId(eateryId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void updateTable(UpdateTableRequestDTO table) {
+        tableRepository.updateTable(table.getId(), table.getName(), table.getLocation());
     }
 }

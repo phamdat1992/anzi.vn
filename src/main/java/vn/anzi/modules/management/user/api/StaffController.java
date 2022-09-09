@@ -32,12 +32,6 @@ public class StaffController {
 
     @GetMapping("")
     public ResponseEntity<GetAllStaffResponseDTO> getAllStaff(@RequestBody GetAllStaffRequestDTO staffRequest, HttpServletRequest request) {
-        UserEntity user = authenticateUserService.getUserFromCookie(request);
-        if (!authenticateUserService.isManager(user, staffRequest.getEateryId())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .build();
-        }
-
         GetAllStaffResponseDTO response = new GetAllStaffResponseDTO();
         response.setStaff(staffService.getAllStaffByEateryId(staffRequest.getEateryId()));
         response.setRole(roleService.getAllRole());
@@ -47,26 +41,12 @@ public class StaffController {
 
     @DeleteMapping("")
     public ResponseEntity<Void> deleteStaff(@RequestBody DeleteStaffRequestDTO deleteStaffRequest, HttpServletRequest request) {
-        UserEntity user = authenticateUserService.getUserFromCookie(request);
-        if (!authenticateUserService.isManager(user, deleteStaffRequest.getEateryId())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .build();
-        }
-
-        roleService.removeUserByUserEateryId(deleteStaffRequest.getStaffId());
         eateryService.removeUserByUserEateryId(deleteStaffRequest.getStaffId(), deleteStaffRequest.getEateryId());
-
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("")
     public ResponseEntity<NewStaffResponseDTO> createStaff(@RequestBody NewStaffRequestDTO newStaffRequestDTO, HttpServletRequest request) {
-        UserEntity user = authenticateUserService.getUserFromCookie(request);
-        if (!authenticateUserService.isManager(user, newStaffRequestDTO.getEateryId())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .build();
-        }
-
         UserEateryEntity userEateryEntity = staffService.createNewStaff(newStaffRequestDTO);
         NewStaffResponseDTO newStaffResponseDTO = new NewStaffResponseDTO();
         newStaffResponseDTO.setId(userEateryEntity.getId());

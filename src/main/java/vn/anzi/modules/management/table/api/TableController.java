@@ -27,11 +27,6 @@ public class TableController {
     @PostMapping("")
     public ResponseEntity<NewTableResponseDTO> createNewTable(@RequestBody NewTableRequestDTO newEateryRequestDTO, HttpServletRequest request) {
         UserEntity user = authenticateUserService.getUserFromCookie(request);
-        if (!authenticateUserService.isManager(user, newEateryRequestDTO.getEateryId())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .build();
-        }
-
         TableEntity table = tableService.createTable(newEateryRequestDTO);
         NewTableResponseDTO tableResponse = new NewTableResponseDTO();
         tableResponse.setId(table.getId());
@@ -39,28 +34,22 @@ public class TableController {
         return ResponseEntity.ok().body(tableResponse);
     }
 
+    @PutMapping("")
+    public ResponseEntity<Void> updateTable(@RequestBody UpdateTableRequestDTO table, HttpServletRequest request) {
+        tableService.updateTable(table);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("")
     public  ResponseEntity<Void> deleteTable(@RequestBody DeleteTableRequestDTO table, HttpServletRequest request) {
-        UserEntity user = authenticateUserService.getUserFromCookie(request);
-        if (!authenticateUserService.isManager(user, table.getEateryId())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .build();
-        }
-
         tableService.deleteTable(table);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("")
-    public ResponseEntity<GetAllTableResponseDTO> getAllTable(@RequestBody GetAllTableRequestDTO tableRequest, HttpServletRequest request) {
-        UserEntity user = authenticateUserService.getUserFromCookie(request);
-        if (!authenticateUserService.isManager(user, tableRequest.getEateryId())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .build();
-        }
-
+    @GetMapping("/{eateryId}")
+    public ResponseEntity<GetAllTableResponseDTO> getAllTable(@PathVariable Long eateryId, HttpServletRequest request) {
         GetAllTableResponseDTO response = new GetAllTableResponseDTO();
-        response.setTable(this.tableService.getAllTableByEateryId(tableRequest.getEateryId()));
+        response.setTables(this.tableService.getAllTableByEateryId(eateryId));
 
         return ResponseEntity.ok().body(response);
     }

@@ -8,9 +8,9 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.WebUtils;
-import vn.anzi.modules.management.role.entity.UserEateryRoleEntity;
-import vn.anzi.modules.management.role.model.UserRoleModel;
-import vn.anzi.modules.management.role.services.RoleService;
+import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
+import vn.anzi.modules.management.eatery.services.EateryService;
+import vn.anzi.modules.management.role.model.RoleModel;
 import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.repository.UserRepository;
 
@@ -22,7 +22,7 @@ import java.util.Optional;
 public class AuthenticateUserService {
 
     @Autowired
-    private RoleService roleService;
+    private EateryService eateryService;
 
     @Autowired
     private UserRepository userRepository;
@@ -93,24 +93,11 @@ public class AuthenticateUserService {
 
     public HttpCookie generateTokenCookie(String tokenId, String tokenValue) {
         return ResponseCookie.from(tokenId, tokenValue)
-                .httpOnly(true)
+                //.httpOnly(true)
+                //.sameSite("strict")
+                //.secure(true)
                 .maxAge(Integer.parseInt(this.authenticateTokenTimeLiveInSecond))
-                .sameSite("strict")
-                .secure(true)
                 .path("/api")
                 .build();
-    }
-
-    public Boolean isManager(UserEntity user, Long eateryId) {
-        if (user == null) {
-            return false;
-        }
-
-        UserEateryRoleEntity userEateryRoleEntity = roleService.getUserEateryRoleEntity(user.getId(), eateryId);
-        if (userEateryRoleEntity == null) {
-            return false;
-        }
-
-        return userEateryRoleEntity.getRoleId() == (long) UserRoleModel.MANAGER.getValue();
     }
 }

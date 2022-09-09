@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "management_user_eatery")
+@Table(name = "")
 @Data
-public class UserEateryEntity {
+public class EateryRoleEntity {
     /**
      *
      */
@@ -18,14 +18,8 @@ public class UserEateryEntity {
     private Long id;
     @Column
     private String name;
-    @Column(name="fk_management_user")
-    private Long userId;
-    @Column(name="fk_management_eatery")
-    private Long eateryId;
-
-    @Column(name="fk_management_role")
+    @Column
+    private String address;
+    @Column(name="role_id")
     private Long roleId;
-
-    @Column(name="is_active")
-    private Boolean isActive;
 }

@@ -25,13 +25,10 @@ public class AuthenticateUserController {
     @Value("${authenticate.user.cookie.id}")
     private String authenticateUserCookieId;
 
-    @GetMapping("")
-    // @PostMapping("")
-    // public ResponseEntity<Void> authenticateUser(@RequestBody AuthenticateRequestDTO authenticate, HttpServletRequest request) {
-    public ResponseEntity<Void> authenticateUser(HttpServletRequest request) {
+    @PostMapping("")
+    public ResponseEntity<Void> authenticateUser(@RequestBody AuthenticateRequestDTO authenticate, HttpServletRequest request) {
         try {
-            // UserEntity userEntity = this.authenticateService.getUser(authenticate.getEmail(), request);
-            UserEntity userEntity = this.authenticateService.getUser("test@abc.com", request);
+            UserEntity userEntity = this.authenticateService.getUser(authenticate.getEmail(), request);
             HttpCookie accessTokenCookie = authenticateService.generateTokenCookie(
                     this.authenticateUserCookieEmail,
                     userEntity.getEmail()

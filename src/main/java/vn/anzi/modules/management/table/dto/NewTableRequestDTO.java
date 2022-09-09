@@ -17,5 +17,7 @@ public class NewTableRequestDTO {
     @NotNull
     @NotEmpty
     private String name;
+    @NotNull
+    @NotEmpty
     private String location;
 }
