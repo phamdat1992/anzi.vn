@@ -35,13 +35,12 @@ public class StaffService {
     public UserEateryEntity createNewStaff(NewStaffRequestDTO newStaffRequestDTO) {
         UserEntity newStaffUser = authenticateUserService.getUserFromDbByEmail(newStaffRequestDTO.getEmail());
         if (newStaffUser == null) {
-            newStaffUser = authenticateUserService.createUser(newStaffUser.getEmail());
+            newStaffUser = authenticateUserService.createUser(newStaffRequestDTO.getEmail());
         }
 
         EateryEntity eateryEntity = new EateryEntity();
         eateryEntity.setId(newStaffRequestDTO.getEateryId());
-        UserEateryEntity userEateryEntity = eateryService.createUserEatery(eateryEntity, newStaffUser, newStaffRequestDTO.getRoleId());
 
-        return userEateryEntity;
+        return eateryService.createUserEatery(eateryEntity, newStaffUser, newStaffRequestDTO.getRoleId(), newStaffRequestDTO.getName());
     }
 }

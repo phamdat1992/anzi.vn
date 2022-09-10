@@ -30,18 +30,24 @@ public class StaffController {
     @Autowired
     private EateryService eateryService;
 
-    @GetMapping("")
-    public ResponseEntity<GetAllStaffResponseDTO> getAllStaff(@RequestBody GetAllStaffRequestDTO staffRequest, HttpServletRequest request) {
+    @GetMapping("/{eateryId}")
+    public ResponseEntity<GetAllStaffResponseDTO> getAllStaff(@PathVariable Long eateryId, HttpServletRequest request) {
         GetAllStaffResponseDTO response = new GetAllStaffResponseDTO();
-        response.setStaff(staffService.getAllStaffByEateryId(staffRequest.getEateryId()));
-        response.setRole(roleService.getAllRole());
+        response.setStaffs(staffService.getAllStaffByEateryId(eateryId));
+        response.setRoles(roleService.getAllRole());
 
         return ResponseEntity.ok().body(response);
     }
 
     @DeleteMapping("")
     public ResponseEntity<Void> deleteStaff(@RequestBody DeleteStaffRequestDTO deleteStaffRequest, HttpServletRequest request) {
-        eateryService.removeUserByUserEateryId(deleteStaffRequest.getStaffId(), deleteStaffRequest.getEateryId());
+        eateryService.removeUserByUserId(deleteStaffRequest.getId());
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("")
+    public ResponseEntity<Void> updateStaff(@RequestBody UpdateStaffRequestDTO staff, HttpServletRequest request) {
+        eateryService.updateUser(staff.getStaffId(), staff.getName(), staff.getRoleId());
         return ResponseEntity.ok().build();
     }
 

@@ -29,12 +29,13 @@ public class EateryService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public UserEateryEntity createUserEatery(EateryEntity eateryEntity, UserEntity userEntity, long roleId) {
+    public UserEateryEntity createUserEatery(EateryEntity eateryEntity, UserEntity userEntity, Long roleId, String name) {
         UserEateryEntity userEateryEntity = new UserEateryEntity();
         userEateryEntity.setEateryId(eateryEntity.getId());
         userEateryEntity.setUserId(userEntity.getId());
         userEateryEntity.setIsActive(true);
         userEateryEntity.setRoleId(roleId);
+        userEateryEntity.setName(name);
         return userEateryRepository.save(userEateryEntity);
     }
 
@@ -43,8 +44,13 @@ public class EateryService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void removeUserByUserEateryId(Long userEateryId, Long eateryId) {
-        userEateryRepository.removeUserByUserEateryId(userEateryId, eateryId);
+    public void removeUserByUserId(Long userEateryId) {
+        userEateryRepository.removeUserByUserId(userEateryId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void updateUser(Long id, String name, Long roleId) {
+        userEateryRepository.updateUser(id, name, roleId);
     }
 
     public UserEateryEntity getUserEateryByUserIdAndEateryId(Long userId, Long eateryId) {

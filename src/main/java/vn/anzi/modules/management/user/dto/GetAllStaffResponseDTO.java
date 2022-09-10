@@ -12,6 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllStaffResponseDTO {
-    private List<RoleEntity> role;
-    private List<StaffEntity> staff;
+    private List<RoleEntity> roles;
+    private List<StaffEntity> staffs;
 }

@@ -13,8 +13,5 @@ import javax.validation.constraints.NotNull;
 public class DeleteStaffRequestDTO {
     @NotNull
     @NotEmpty
-    private Long eateryId;
-    @NotNull
-    @NotEmpty
-    private Long staffId;
+    private Long id;
 }
