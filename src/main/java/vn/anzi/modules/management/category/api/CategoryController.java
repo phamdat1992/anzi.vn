@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.anzi.modules.management.category.dto.NewCategoryRequestDTO;
-import vn.anzi.modules.management.category.dto.NewCategoryResponseDTO;
-import vn.anzi.modules.management.category.dto.UpdateCategoryRequestDTO;
+import vn.anzi.modules.management.category.dto.*;
 import vn.anzi.modules.management.category.entity.CategoryEntity;
 import vn.anzi.modules.management.category.services.CategoryService;
+import vn.anzi.modules.management.dish.services.DishService;
 import vn.anzi.modules.management.eatery.dto.NewEateryRequestDTO;
 import vn.anzi.modules.management.eatery.dto.NewEateryResponseDTO;
 import vn.anzi.modules.management.user.entity.UserEntity;
@@ -25,6 +24,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private DishService dishService;
 
     @PostMapping("")
     public ResponseEntity<NewCategoryResponseDTO> createEatery(@RequestBody NewCategoryRequestDTO newCategoryRequestDTO, HttpServletRequest request) {
@@ -44,14 +46,21 @@ public class CategoryController {
 
     @PutMapping("")
     public ResponseEntity<Void> updateCategory(@RequestBody UpdateCategoryRequestDTO updateCategoryRequestDTO, HttpServletRequest request) {
-        UserEntity user = this.authenticateUserService.getUserFromCookie(request);
-
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .build();
-        }
-
         this.categoryService.updateCategory(updateCategoryRequestDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{eateryId}")
+    public ResponseEntity<GetAllCategoryResponse> getAllCategory(@PathVariable Long eateryId, HttpServletRequest request) {
+        GetAllCategoryResponse response = new GetAllCategoryResponse();
+        response.setCategory(this.categoryService.getAllCategory(eateryId));
+        return ResponseEntity.ok().body(response);
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<Void> deleteCategory (@RequestBody DeleteCategoryRequestDTO category, HttpServletRequest request) {
+        categoryService.deleteCategory(category.getId());
+        dishService.deleteDishByCategoryId(category.getId());
         return ResponseEntity.ok().build();
     }
 }

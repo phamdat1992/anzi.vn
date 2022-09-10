@@ -1,4 +1,4 @@
-package vn.anzi.modules.management.dish.dto;
+package vn.anzi.modules.management.category.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DishInfoRequestDTO {
+public class DeleteCategoryRequestDTO {
     @NotNull
     @NotEmpty
-    private Long eateryId;
+    private Long id;
 }
