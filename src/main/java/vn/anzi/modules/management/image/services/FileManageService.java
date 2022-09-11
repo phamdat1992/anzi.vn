@@ -17,6 +17,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class FileManageService {
@@ -58,10 +60,12 @@ public class FileManageService {
 		return s3Client;
 	}
 
-	public void uploadFile(String fileName, byte[] fileData) throws Exception {
+	public void uploadFile(String fileName, String base64) throws Exception {
 		try {
-			InputStream uploadStream = new ByteArrayInputStream(fileData);
+			String data = base64.replaceFirst("^data:image/[^;]*;base64,?","");
+			InputStream uploadStream = new ByteArrayInputStream(Base64.getDecoder().decode(data));
 			ObjectMetadata metadata = new ObjectMetadata();
+			metadata.setContentType(extractMimeType(base64));
 			this.s3Client.putObject(this.bucketName, fileName, uploadStream, metadata);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -89,5 +93,16 @@ public class FileManageService {
 		ByteArrayOutputStream baOuts = new ByteArrayOutputStream();
 		ImageIO.write(bufferedImage, "JPG", baOuts);
 		return baOuts.toByteArray();
+	}
+
+	public static String extractMimeType(final String encoded) {
+		final Pattern mime = Pattern.compile("^data:([a-zA-Z0-9]+/[a-zA-Z0-9]+).*,.*");
+		final Matcher matcher = mime.matcher(encoded);
+
+		if (!matcher.find()) {
+			return "";
+		}
+
+		return matcher.group(1).toLowerCase();
 	}
 }

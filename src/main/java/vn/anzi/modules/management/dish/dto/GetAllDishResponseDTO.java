@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import vn.anzi.modules.management.category.entity.CategoryEntity;
-import vn.anzi.modules.management.dish.entity.DishInfoEntity;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import vn.anzi.modules.management.dish.entity.DishEntity;
 import java.util.List;
 
 @Data
@@ -15,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 public class GetAllDishResponseDTO {
     private List<CategoryEntity> category;
-    private List<DishInfoEntity> dish;
+    private List<DishEntity> dish;
 }

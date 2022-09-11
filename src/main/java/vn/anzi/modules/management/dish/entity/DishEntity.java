@@ -21,13 +21,11 @@ public class DishEntity {
     @Column(length = 1000)
     private String code; //allow null
     @Column(name = "fk_management_eatery")
-    private int eatery;
+    private Long eateryId;
     @Column(name = "fk_management_category")
-    private int category;
-    @Column(name = "fk_disk_status")
-    private int dishStatus;
+    private Long categoryId;
+    @Column(name = "fk_management_dish_status")
+    private Long dishStatusId;
     @Column
-    private DateTime created_time;
-    @Column
-    private DateTime updated_time;
+    private String image;
 }
