@@ -1,7 +1,6 @@
 package vn.anzi.modules.management.dish.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.anzi.modules.management.dish.dto.NewDishRequestDTO;
@@ -10,7 +9,6 @@ import vn.anzi.modules.management.dish.entity.DishEntity;
 import vn.anzi.modules.management.dish.repository.DishRepository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class DishService {

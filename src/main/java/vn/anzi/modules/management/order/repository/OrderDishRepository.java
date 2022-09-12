@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface OrderDishRepository extends JpaRepository<OrderDishEntity, Integer> {
-    Optional<OrderDishEntity> findById(int orderId);
-    List<OrderDishEntity> getAllByFkManagementOrder(int orderId);
+    Optional<OrderDishEntity> findById(Long orderId);
+    List<OrderDishEntity> getAllByOrderId(Long orderId);
 }

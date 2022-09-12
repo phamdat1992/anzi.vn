@@ -3,11 +3,12 @@ package vn.anzi.modules.management.eatery.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.anzi.modules.management.eatery.entity.*;
+import vn.anzi.modules.management.eatery.entity.EateryEntity;
+import vn.anzi.modules.management.eatery.entity.EateryRoleEntity;
+import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.repository.EateryRepository;
 import vn.anzi.modules.management.eatery.repository.EateryRoleRepository;
 import vn.anzi.modules.management.eatery.repository.UserEateryRepository;
-import vn.anzi.modules.management.role.model.RoleModel;
 import vn.anzi.modules.management.user.entity.UserEntity;
 
 import java.util.List;

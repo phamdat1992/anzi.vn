@@ -1,7 +1,6 @@
 package vn.anzi.modules.diner.entity;
 
 import lombok.Data;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
 

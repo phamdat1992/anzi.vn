@@ -3,14 +3,12 @@ package vn.anzi.modules.management.table.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.anzi.modules.management.eatery.repository.EateryRepository;
 import vn.anzi.modules.management.table.dto.DeleteTableRequestDTO;
 import vn.anzi.modules.management.table.dto.NewTableRequestDTO;
 import vn.anzi.modules.management.table.dto.UpdateTableRequestDTO;
 import vn.anzi.modules.management.table.entity.TableEntity;
 import vn.anzi.modules.management.table.repository.TableRepository;
 
-import javax.persistence.Table;
 import java.util.List;
 
 @Service

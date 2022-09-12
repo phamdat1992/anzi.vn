@@ -7,7 +7,6 @@ import vn.anzi.modules.management.category.services.CategoryService;
 import vn.anzi.modules.management.dish.dto.*;
 import vn.anzi.modules.management.dish.services.DishService;
 import vn.anzi.modules.management.image.services.FileManageService;
-import vn.anzi.modules.management.table.dto.NewTableRequestDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;

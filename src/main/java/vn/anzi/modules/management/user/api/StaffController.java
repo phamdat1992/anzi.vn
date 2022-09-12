@@ -1,14 +1,12 @@
 package vn.anzi.modules.management.user.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
 import vn.anzi.modules.management.role.services.RoleService;
 import vn.anzi.modules.management.user.dto.*;
-import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.services.AuthenticateUserService;
 import vn.anzi.modules.management.user.services.StaffService;
 

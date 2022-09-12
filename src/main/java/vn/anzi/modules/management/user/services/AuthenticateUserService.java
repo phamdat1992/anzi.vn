@@ -1,6 +1,5 @@
 package vn.anzi.modules.management.user.services;
 
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpCookie;
@@ -8,9 +7,7 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.WebUtils;
-import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
-import vn.anzi.modules.management.role.model.RoleModel;
 import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.repository.UserRepository;
 

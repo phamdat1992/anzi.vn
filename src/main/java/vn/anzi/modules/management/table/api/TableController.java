@@ -1,11 +1,8 @@
 package vn.anzi.modules.management.table.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.anzi.modules.management.eatery.dto.NewEateryRequestDTO;
-import vn.anzi.modules.management.eatery.dto.NewEateryResponseDTO;
 import vn.anzi.modules.management.table.dto.*;
 import vn.anzi.modules.management.table.entity.TableEntity;
 import vn.anzi.modules.management.table.services.TableService;

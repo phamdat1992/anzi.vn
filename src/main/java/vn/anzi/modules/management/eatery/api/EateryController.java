@@ -8,7 +8,6 @@ import vn.anzi.modules.management.eatery.dto.GetAllEateryResponseDTO;
 import vn.anzi.modules.management.eatery.dto.NewEateryRequestDTO;
 import vn.anzi.modules.management.eatery.dto.NewEateryResponseDTO;
 import vn.anzi.modules.management.eatery.entity.EateryEntity;
-import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
 import vn.anzi.modules.management.role.model.RoleModel;
 import vn.anzi.modules.management.user.entity.UserEntity;

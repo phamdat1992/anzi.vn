@@ -3,14 +3,14 @@ package vn.anzi.modules.diner.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import vn.anzi.modules.management.order.entity.DishBucketEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DishHistoryResponse {
-    private ArrayList<Integer> dishId;
-    private ArrayList<Integer> quantity;
-    private ArrayList<Boolean> status;
+public class DishBucketResponseDTO {
+    private List<DishBucketEntity> bucket;
 }

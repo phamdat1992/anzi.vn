@@ -52,4 +52,15 @@ public class AuthenticateDinerService {
                 .path("/api")
                 .build();
     }
+
+    public Long getUserIdFromCookie(HttpServletRequest request) {
+        Cookie[] cookie = request.getCookies();
+        for (Cookie obj : cookie) {
+            if (obj.getName().equals(authenticateDinerCookieId)) {
+                return Long.parseLong(obj.getValue());
+            }
+        }
+
+        return null;
+    }
 }

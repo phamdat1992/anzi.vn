@@ -1,7 +1,6 @@
 package vn.anzi.modules.management.order.entity;
 
 import lombok.Data;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
@@ -13,15 +12,11 @@ public class OrderDishEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "fk_management_order")
-    private int fkManagementOrder;
+    private Long orderId;
     @Column(name = "fk_management_dish")
-    private int fkManagementDish;
+    private Long dishId;
     @Column
-    private int quantity;
-    @Column
-    private DateTime createdTime;
-    @Column
-    private DateTime updatedTime;
+    private Long quantity;
 }

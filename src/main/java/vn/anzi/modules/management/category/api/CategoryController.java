@@ -8,8 +8,6 @@ import vn.anzi.modules.management.category.dto.*;
 import vn.anzi.modules.management.category.entity.CategoryEntity;
 import vn.anzi.modules.management.category.services.CategoryService;
 import vn.anzi.modules.management.dish.services.DishService;
-import vn.anzi.modules.management.eatery.dto.NewEateryRequestDTO;
-import vn.anzi.modules.management.eatery.dto.NewEateryResponseDTO;
 import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.services.AuthenticateUserService;
 

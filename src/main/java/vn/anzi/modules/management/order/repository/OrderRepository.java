@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
-    Optional<OrderEntity> findById(int orderId);
+    Optional<OrderEntity> findById(Long orderId);
 
     @Query(value = "select * " +
             "from management_order " +
@@ -19,5 +19,5 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
             ";",
             nativeQuery = true
     )
-    List<OrderEntity> getAllByDinerTable(int dinerId, int tableId);
+    List<OrderEntity> getAllByDinerTable(Long dinerId, Long tableId);
 }

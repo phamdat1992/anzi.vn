@@ -6,14 +6,12 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "management_order_type")
+@Table(name = "management_order")
 @Data
-public class OrderTypeEntity {
+public class TotalDishByUserEntity {
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column
-    private String name;
+    private Long quantity;
 }

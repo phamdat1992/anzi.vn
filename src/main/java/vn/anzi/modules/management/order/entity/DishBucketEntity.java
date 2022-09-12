@@ -1,14 +1,13 @@
 package vn.anzi.modules.management.order.entity;
 
 import lombok.Data;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "management_order_type")
+@Table(name = "management_order_dish")
 @Data
-public class OrderTypeEntity {
+public class DishBucketEntity {
     private static final Long serialVersionUID = 1L;
 
     @Id
@@ -16,4 +15,12 @@ public class OrderTypeEntity {
     private Long id;
     @Column
     private String name;
+    @Column
+    private Long price;
+    @Column
+    private Long status;
+    @Column
+    private Long quantity;
+    @Column
+    private String image;
 }
