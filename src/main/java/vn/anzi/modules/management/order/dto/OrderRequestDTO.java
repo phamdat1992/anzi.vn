@@ -10,8 +10,11 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ManagementOrderByEateryRequest {
+public class OrderRequestDTO {
     @NotNull
     @NotEmpty
-    int eateryId;
+    private Long eateryId;
+
+    private Long offsetOrder;
+    private Long offsetCallHostess;
 }

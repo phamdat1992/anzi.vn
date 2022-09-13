@@ -31,10 +31,6 @@ public class DinerOrderService {
     @Autowired
     private OrderDishRepository orderDishRepository;
 
-    private void getHistoryOrder(Long dinerId, long eateryId, DishInfoResponseDTO dishInfoResponse) {
-        //TODO: history order
-    }
-
     public void createListOrder(OrderRequestDTO orderRequest, OrderEntity orderEntity) {
         for (OrderItemDTO order: orderRequest.getDishInfo()) {
             createNewDishInOrderEntity(orderEntity, order);
@@ -61,25 +57,4 @@ public class DinerOrderService {
 
         return orderRepository.save(orderEntity);
     }
-
-    /*
-    public DishHistoryResponseDTO getDishHistory(DishHistoryRequestDTO dishHistoryRequest) {
-        int dinerId = dishHistoryRequest.getDinerId();
-        int tableId = dishHistoryRequest.getTableId();
-        List<OrderEntity> orderList = orderRepository.getAllByDinerTable(dinerId, tableId);
-
-        DishHistoryResponseDTO dishHistoryResponse = new DishHistoryResponseDTO();
-        for (OrderEntity orderEntity: orderList) {
-            List<OrderDishEntity> orderDishEntityList =  orderDishRepository.getAllByFkManagementOrder(orderEntity.getId());
-            for (OrderDishEntity orderDishEntity: orderDishEntityList) {
-                dishHistoryResponse.getDishId().add(orderDishEntity.getFkManagementDish());
-                dishHistoryResponse.getQuantity().add(orderDishEntity.getQuantity());
-                dishHistoryResponse.getStatus().add(orderEntity.getIsConfirmed());
-            }
-        }
-
-        return new DishHistoryResponseDTO();
-    }
-    */
-
 }
