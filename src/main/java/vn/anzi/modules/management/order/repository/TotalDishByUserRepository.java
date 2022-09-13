@@ -20,5 +20,5 @@ public interface TotalDishByUserRepository extends JpaRepository<TotalDishByUser
             ";",
             nativeQuery = true
     )
-    TotalDishByUserEntity getTotalDishByUser(Long dinerId, Long tableId);
+    TotalDishByUserEntity  getTotalDishByUser(Long dinerId, Long tableId);
 }

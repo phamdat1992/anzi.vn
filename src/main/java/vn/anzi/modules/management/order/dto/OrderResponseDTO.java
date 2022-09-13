@@ -3,7 +3,7 @@ package vn.anzi.modules.management.order.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import vn.anzi.modules.management.order.entity.OrderInfoEntity;
+import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -15,5 +15,5 @@ import java.util.List;
 public class OrderResponseDTO {
     @NotNull
     @NotEmpty
-    private List<OrderInfoEntity> order;
+    private List<OrderInfoNotConfirmEntity> order;
 }

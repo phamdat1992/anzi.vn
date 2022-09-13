@@ -2,9 +2,12 @@ package vn.anzi.modules.management.order.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.anzi.modules.management.order.entity.DishBucketEntity;
-import vn.anzi.modules.management.order.repository.DishBucketRepository;
-import vn.anzi.modules.management.order.repository.TotalDishByUserRepository;
+import vn.anzi.modules.management.order.entity.OrderDetailEntity;
+import vn.anzi.modules.management.order.entity.OrderInfoConfirmedEntity;
+import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
+import vn.anzi.modules.management.order.repository.*;
 
 import java.util.List;
 
@@ -16,11 +19,49 @@ public class OrderService {
     @Autowired
     private DishBucketRepository dishBucketRepository;
 
+    @Autowired
+    private OrderInfoNotConfirmRepository orderInfoNotConfirmRepository;
+
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private OrderInfoConfirmedRepository orderInfoConfirmedRepository;
+
     public Long getTotalDishByUser(Long userId, Long tableId) {
-        return totalDishByUserRepository.getTotalDishByUser(userId, tableId).getQuantity();
+        try {
+            return totalDishByUserRepository.getTotalDishByUser(userId, tableId).getQuantity();
+        } catch (Exception e) {
+            return 0L;
+        }
     }
 
-    public List<DishBucketEntity> getAllDishBucketByTableId(Long dinerId, Long tableId) {
-        return dishBucketRepository.getAllDishBucketByTableId(dinerId, tableId);
+    public List<OrderInfoNotConfirmEntity>getOrderFromOffset(Long eateryId, Long tableId) {
+        return orderInfoNotConfirmRepository.getOrderFromOffset(eateryId, tableId);
+    }
+
+    public List<OrderInfoNotConfirmEntity>getOrderHostessFromOffset(Long eateryId, Long orderId) {
+        return orderInfoNotConfirmRepository.getOrderHostessFromOffset(eateryId, orderId);
+    }
+
+    public List<DishBucketEntity> getAllDishBucketByTableId(Long dinerId, Long orderId) {
+        return dishBucketRepository.getAllDishBucketByTableId(dinerId, orderId);
+    }
+
+    public List<OrderDetailEntity> getOrderDetail(Long orderId) {
+        return orderDetailRepository.getOrderDetail(orderId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void confirmOrder(Long orderId) {
+        orderRepository.confirmOrder(orderId);
+    }
+
+    public List<OrderInfoConfirmedEntity> getOrderConfirmedByOffset(Long eateryId, Long orderId) {
+        return orderInfoConfirmedRepository.getOrderFromOffset(eateryId, orderId);
+
     }
 }

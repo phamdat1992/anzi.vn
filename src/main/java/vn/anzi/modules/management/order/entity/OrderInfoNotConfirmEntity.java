@@ -8,23 +8,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "management_order")
 @Data
-public class OrderInfoEntity {
-    private static final Long serialVersionUID = 1L;
-
+public class OrderInfoNotConfirmEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String name;
     @Column
     private String location;
-    @Column
-    private String type;
+    @Column (name="type_id")
+    private Long typeId;
     @Column (name="total_dish")
     private Long totalDish;
     @Column (name="total_price")
     private Long totalPrice;
     @Column (name="created_time")
-    private DateTime createdTime;
+    private String createdTime;
 }

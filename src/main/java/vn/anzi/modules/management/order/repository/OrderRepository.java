@@ -1,6 +1,7 @@
 package vn.anzi.modules.management.order.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import vn.anzi.modules.management.order.entity.OrderEntity;
@@ -20,4 +21,13 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
             nativeQuery = true
     )
     List<OrderEntity> getAllByDinerTable(Long dinerId, Long tableId);
+
+    @Modifying
+    @Query(value = "update management_order " +
+            "set is_confirmed=1 " +
+            "where id=:id " +
+            "; ",
+            nativeQuery = true
+    )
+    void confirmOrder(Long id);
 }
