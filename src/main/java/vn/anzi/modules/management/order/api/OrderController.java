@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.anzi.modules.management.order.dto.*;
 import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
+import vn.anzi.modules.management.order.model.EventHandler;
 import vn.anzi.modules.management.order.services.OrderService;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -16,6 +18,14 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private EventHandler eventHandler;
+
+    @GetMapping("/register-client/{eateryId}")
+    public SseEmitter sseEmitter(@PathVariable Long eateryId, HttpServletRequest request) {
+        return eventHandler.registerClient(eateryId);
+    }
 
     @PostMapping("/history")
     public ResponseEntity<HistoryResponseDTO> getHistory(@RequestBody HistoryRequestDTO history, HttpServletRequest request) {

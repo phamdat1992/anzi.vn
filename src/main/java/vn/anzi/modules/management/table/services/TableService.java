@@ -39,4 +39,8 @@ public class TableService {
     public void updateTable(UpdateTableRequestDTO table) {
         tableRepository.updateTable(table.getId(), table.getName(), table.getLocation());
     }
+
+    public TableEntity getTableById(Long tableId) {
+        return tableRepository.findById(tableId).orElse(null);
+    }
 }

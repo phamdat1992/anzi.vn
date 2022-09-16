@@ -21,7 +21,7 @@ public interface OrderInfoNotConfirmRepository extends JpaRepository<OrderInfoNo
             "left join management_order_dish on management_order.id=management_order_dish.fk_management_order " +
             "left join management_dish on management_order_dish.fk_management_dish=management_dish.id " +
             "where management_order.fk_management_order_type=1 " +
-            "and management_order.id<:orderId " +
+            "and management_order.id>:orderId " +
             "and management_table.fk_management_eatery=:eateryId " +
             "and management_order.is_confirmed=0 " +
             "group by management_order.id " +
@@ -42,7 +42,7 @@ public interface OrderInfoNotConfirmRepository extends JpaRepository<OrderInfoNo
             "left join management_order_dish on management_order.id=management_order_dish.fk_management_order " +
             "left join management_dish on management_order_dish.fk_management_dish=management_dish.id " +
             "where management_order.fk_management_order_type=2 " +
-            "and management_order.id<:orderId " +
+            "and management_order.id>:orderId " +
             "and management_table.fk_management_eatery=:eateryId " +
             "and management_order.is_confirmed=0 " +
             "group by management_order.id " +

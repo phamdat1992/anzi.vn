@@ -9,7 +9,12 @@ import vn.anzi.modules.diner.services.DinerOrderService;
 import vn.anzi.modules.management.category.services.CategoryService;
 import vn.anzi.modules.management.dish.services.DishService;
 import vn.anzi.modules.management.order.entity.OrderEntity;
+import vn.anzi.modules.management.order.entity.OrderEventEntity;
+import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
+import vn.anzi.modules.management.order.model.EventHandler;
 import vn.anzi.modules.management.order.services.OrderService;
+import vn.anzi.modules.management.table.entity.TableEntity;
+import vn.anzi.modules.management.table.services.TableService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,6 +37,12 @@ public class DinerOrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private EventHandler eventHandler;
+
+    @Autowired
+    private TableService tableService;
+
     @ResponseBody
     @PostMapping("/dish-info")
     public ResponseEntity<DishInfoResponseDTO> getDishInfo(@RequestBody DishInfoRequestDTO dish, HttpServletRequest request) {
@@ -40,6 +51,8 @@ public class DinerOrderController {
         response.setDish(dishService.getAllDishByEateryId(dish.getEateryId()));
         response.setCategory(categoryService.getAllCategory(dish.getEateryId()));
         response.setQuantity(orderService.getTotalDishByUser(userId, dish.getTableId()));
+        response.setTable(tableService.getTableById(dish.getTableId()));
+
         return ResponseEntity.ok().body(response);
     }
 
@@ -48,6 +61,19 @@ public class DinerOrderController {
         Long userId = authenticateService.getUserIdFromCookie(request);
         OrderEntity order = dinerOrderService.createNewOrderEntity(orderRequest, userId);
         dinerOrderService.createListOrder(orderRequest, order);
+        OrderEventEntity orderEvent = orderService.getOrderByOrderId(order.getId());
+        if (orderEvent != null) {
+            OrderInfoNotConfirmEntity orderInfoNotConfirmEntity = new OrderInfoNotConfirmEntity();
+            orderInfoNotConfirmEntity.setId(order.getId());
+            orderInfoNotConfirmEntity.setName(orderRequest.getTableName());
+            orderInfoNotConfirmEntity.setLocation(orderRequest.getTableLocation());
+            orderInfoNotConfirmEntity.setCreatedTime(orderEvent.getCreatedTime());
+            orderInfoNotConfirmEntity.setTotalDish(orderRequest.getTotalDish());
+            orderInfoNotConfirmEntity.setTotalPrice(orderRequest.getTotalPrice());
+            orderInfoNotConfirmEntity.setTypeId(orderRequest.getOrderTypeId());
+
+            eventHandler.broadcast(orderInfoNotConfirmEntity, orderRequest.getEateryId());
+        }
         return ResponseEntity.ok().build();
     }
 

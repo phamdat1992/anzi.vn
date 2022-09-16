@@ -18,6 +18,19 @@ public class OrderRequestDTO {
     @NotNull
     @NotEmpty
     private Long tableId;
+    @NotNull
+    @NotEmpty
+    private String tableName;
+    @NotNull
+    @NotEmpty
+    private String tableLocation;
+    @NotNull
+    @NotEmpty
+    private Long eateryId;
+
+    private Long totalPrice;
+
+    private Long totalDish;
 
     private List<OrderItemDTO> dishInfo;
 }

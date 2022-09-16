@@ -3,10 +3,7 @@ package vn.anzi.modules.management.order.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.anzi.modules.management.order.entity.DishBucketEntity;
-import vn.anzi.modules.management.order.entity.OrderDetailEntity;
-import vn.anzi.modules.management.order.entity.OrderInfoConfirmedEntity;
-import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
+import vn.anzi.modules.management.order.entity.*;
 import vn.anzi.modules.management.order.repository.*;
 
 import java.util.List;
@@ -30,6 +27,9 @@ public class OrderService {
 
     @Autowired
     private OrderInfoConfirmedRepository orderInfoConfirmedRepository;
+
+    @Autowired
+    private OrderEventRepository orderEventRepository;
 
     public Long getTotalDishByUser(Long userId, Long tableId) {
         try {
@@ -62,6 +62,9 @@ public class OrderService {
 
     public List<OrderInfoConfirmedEntity> getOrderConfirmedByOffset(Long eateryId, Long orderId) {
         return orderInfoConfirmedRepository.getOrderFromOffset(eateryId, orderId);
+    }
 
+    public OrderEventEntity getOrderByOrderId(Long orderId) {
+        return orderEventRepository.findById(orderId).orElse(null);
     }
 }

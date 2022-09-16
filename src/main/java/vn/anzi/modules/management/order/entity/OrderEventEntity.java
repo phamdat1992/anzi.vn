@@ -7,11 +7,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "management_order")
 @Data
-public class OrderEntity {
+public class OrderEventEntity {
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="fk_diner")
     private Long dinerId;
@@ -21,4 +20,6 @@ public class OrderEntity {
     private Long orderTypeId;
     @Column
     private Boolean isConfirmed;
+    @Column (name="created_time")
+    private String createdTime;
 }
