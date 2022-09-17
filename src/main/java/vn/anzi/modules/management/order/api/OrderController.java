@@ -38,7 +38,7 @@ public class OrderController {
     public ResponseEntity<OrderResponseDTO> getAllOrder(@RequestBody OrderRequestDTO order, HttpServletRequest request) {
         OrderResponseDTO response = new OrderResponseDTO();
         List<OrderInfoNotConfirmEntity> orderList = orderService.getOrderFromOffset(order.getEateryId(), order.getOffsetOrder());
-        List<OrderInfoNotConfirmEntity> result = orderService.getOrderHostessFromOffset(order.getEateryId(), order.getOffsetOrder());
+        List<OrderInfoNotConfirmEntity> result = orderService.getOrderHostessFromOffset(order.getEateryId(), order.getOffsetCallHostess());
 
         result.addAll(orderList.subList(0, Math.min(10 - result.size(), orderList.size())));
         response.setOrder(result);

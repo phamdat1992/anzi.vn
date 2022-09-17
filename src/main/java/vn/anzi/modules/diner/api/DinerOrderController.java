@@ -60,7 +60,10 @@ public class DinerOrderController {
     public ResponseEntity<Void> order(@RequestBody OrderRequestDTO orderRequest, HttpServletRequest request) {
         Long userId = authenticateService.getUserIdFromCookie(request);
         OrderEntity order = dinerOrderService.createNewOrderEntity(orderRequest, userId);
-        dinerOrderService.createListOrder(orderRequest, order);
+
+        if (orderRequest.getDishInfo() != null) {
+            dinerOrderService.createListOrder(orderRequest, order);
+        }
         OrderEventEntity orderEvent = orderService.getOrderByOrderId(order.getId());
         if (orderEvent != null) {
             OrderInfoNotConfirmEntity orderInfoNotConfirmEntity = new OrderInfoNotConfirmEntity();

@@ -25,7 +25,11 @@ public class EventHandler {
         var client = new Client();
         client.setSseEmitter(emitter);
         client.setEateryId(eateryId);
-        emitter.onCompletion(() -> registeredClients.remove(client));
+        emitter.onCompletion(() -> {
+            synchronized (this.registeredClients) {
+                this.registeredClients.remove(client);
+            }
+        });
         emitter.onError((err) -> removeAndLogError(client));
         emitter.onTimeout(() -> removeAndLogError(client));
         registeredClients.add(client);

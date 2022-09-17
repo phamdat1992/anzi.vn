@@ -36,7 +36,9 @@ public interface OrderInfoNotConfirmRepository extends JpaRepository<OrderInfoNo
             "   management_table.location as location, " +
             "   management_order.id as id, " +
             "   management_order.fk_management_order_type as type_id, " +
-            "   management_order.created_time as created_time " +
+            "   management_order.created_time as created_time, " +
+            "   0 as total_dish, " +
+            "   0 as total_price " +
             "from management_order " +
             "left join management_table on management_table.id=management_order.fk_management_table " +
             "left join management_order_dish on management_order.id=management_order_dish.fk_management_order " +
