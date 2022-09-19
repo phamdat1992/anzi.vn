@@ -3,6 +3,7 @@ package vn.anzi.modules.management.user.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.anzi.modules.management.eatery.entity.EateryEntity;
 import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
@@ -42,5 +43,10 @@ public class StaffService {
         eateryEntity.setId(newStaffRequestDTO.getEateryId());
 
         return eateryService.createUserEatery(eateryEntity, newStaffUser, newStaffRequestDTO.getRoleId(), newStaffRequestDTO.getName());
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteStaffByEateryId(Long eateryId) {
+        staffRepository.deleteStaffByEateryId(eateryId);
     }
 }

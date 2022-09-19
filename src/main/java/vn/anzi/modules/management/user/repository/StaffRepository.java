@@ -1,7 +1,9 @@
 package vn.anzi.modules.management.user.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import vn.anzi.modules.management.user.entity.StaffEntity;
 
@@ -20,4 +22,12 @@ public interface StaffRepository extends JpaRepository<StaffEntity, Long> {
             nativeQuery = true
     )
     List<StaffEntity> getAllStaffByEateryId(Long eateryId);
+
+    @Modifying
+    @Query(value = "update management_user_eatery " +
+            "set is_active=0 " +
+            "where fk_management_eatery=:id ; ",
+            nativeQuery = true
+    )
+    void deleteStaffByEateryId(@Param("id")Long eateryId);
 }

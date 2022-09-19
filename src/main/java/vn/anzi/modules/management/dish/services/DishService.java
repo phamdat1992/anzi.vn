@@ -70,4 +70,9 @@ public class DishService {
     public void deleteDishById(Long id) {
         dishRepository.deleteDishById(id);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteDishByEateryId(Long eateryId) {
+        dishRepository.deleteDishByEateryId(eateryId);
+    }
 }

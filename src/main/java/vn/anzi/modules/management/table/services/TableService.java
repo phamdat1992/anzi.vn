@@ -43,4 +43,9 @@ public class TableService {
     public TableEntity getTableById(Long tableId) {
         return tableRepository.findById(tableId).orElse(null);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteTableByEateryId(Long eateryId) {
+        tableRepository.deleteTableByEateryId(eateryId);
+    }
 }

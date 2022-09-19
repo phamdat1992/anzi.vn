@@ -57,4 +57,9 @@ public class EateryService {
     public UserEateryEntity getUserEateryByUserIdAndEateryId(Long userId, Long eateryId) {
         return userEateryRepository.findByUserIdAndEateryId(userId, eateryId).orElse(null);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteEateryById(Long eateryId) {
+        eateryRepository.deleteEateryById(eateryId);
+    }
 }

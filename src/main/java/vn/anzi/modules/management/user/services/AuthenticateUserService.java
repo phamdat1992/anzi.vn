@@ -85,6 +85,7 @@ public class AuthenticateUserService {
     public UserEntity createUser(String email) {
         UserEntity user = new UserEntity();
         user.setEmail(email);
+        user.setIsAdmin(false);
         return userRepository.save(user);
     }
 

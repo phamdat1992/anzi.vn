@@ -59,4 +59,12 @@ public interface DishRepository extends JpaRepository<DishEntity, Long> {
             nativeQuery = true
     )
     void deleteDishById(@Param("id")Long id);
+
+    @Modifying
+    @Query(value = "update management_dish " +
+            "set is_active=0 " +
+            "where fk_management_eatery=:id ; ",
+            nativeQuery = true
+    )
+    void deleteDishByEateryId(@Param("id")Long eateryId);
 }

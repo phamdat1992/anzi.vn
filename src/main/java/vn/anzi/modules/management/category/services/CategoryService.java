@@ -45,4 +45,9 @@ public class CategoryService {
     public void deleteCategory(Long categoryId) {
         categoryRepository.deleteCategory(categoryId);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteCategoryByEateryId(Long eateryId) {
+        categoryRepository.deleteCategoryByEateryId(eateryId);
+    }
 }

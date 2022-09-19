@@ -34,4 +34,12 @@ public interface TableRepository extends JpaRepository<TableEntity, Long> {
             nativeQuery = true
     )
     void deleteTable(@Param("id")Long id);
+
+    @Modifying
+    @Query(value = "update management_table " +
+            "set is_active=0 " +
+            "where fk_management_eatery=:id ; ",
+            nativeQuery = true
+    )
+    void deleteTableByEateryId(@Param("id")Long eateryId);
 }

@@ -28,4 +28,12 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> 
             nativeQuery = true
     )
     void deleteCategory(@Param("id")Long id);
+
+    @Modifying
+    @Query(value = "update management_category " +
+            "set is_active=0 " +
+            "where fk_management_eatery=:id ; ",
+            nativeQuery = true
+    )
+    void deleteCategoryByEateryId(@Param("id")Long eateryId);
 }
