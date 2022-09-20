@@ -80,7 +80,7 @@ public class EateryController {
     @DeleteMapping("")
     public ResponseEntity<Void> deleteEatery(@RequestBody DeleteEateryRequestDTO eatery, HttpServletRequest request) {
         categoryService.deleteCategoryByEateryId(eatery.getId());
-        dishService.deleteDishByCategoryId(eatery.getId());
+        dishService.deleteDishByEateryId(eatery.getId());
         eateryService.deleteEateryById(eatery.getId());
         tableService.deleteTableByEateryId(eatery.getId());
         staffService.deleteStaffByEateryId(eatery.getId());
