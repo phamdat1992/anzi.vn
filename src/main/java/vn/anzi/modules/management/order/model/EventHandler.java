@@ -40,13 +40,14 @@ public class EventHandler {
         registeredClients.remove(client);
     }
 
-    public void broadcast(OrderInfoNotConfirmEntity order, Long eateryId) {
+    public void broadcast(OrderInfoNotConfirmEntity order, Long eateryId, Boolean isConfirmed) {
         Set<Client> clients = Set.copyOf(registeredClients);
         for (Client client: clients) {
             if (Objects.equals(client.getEateryId(), eateryId)) {
                 OrderServerEvent orderEvent = new OrderServerEvent();
                 orderEvent.setId(order.getId());
                 orderEvent.setName(order.getName());
+                orderEvent.setIsConfirmed(isConfirmed);
                 orderEvent.setLocation(order.getLocation());
                 orderEvent.setTypeId(order.getTypeId());
                 orderEvent.setTotalDish(order.getTotalDish());

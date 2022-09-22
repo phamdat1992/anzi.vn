@@ -23,5 +23,7 @@ public class OrderServerEvent {
 
     private Long totalPrice;
 
+    private Boolean isConfirmed;
+
     private String createdTime;
 }

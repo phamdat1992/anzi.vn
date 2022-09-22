@@ -52,9 +52,12 @@ public class OrderController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping("/confirm/{orderId}")
-    public ResponseEntity<Void> confirmOrder(@PathVariable Long orderId, HttpServletRequest request) {
+    @PostMapping("/confirm/{eateryId}/{orderId}")
+    public ResponseEntity<Void> confirmOrder(@PathVariable Long orderId, @PathVariable Long eateryId, HttpServletRequest request) {
         orderService.confirmOrder(orderId);
+        OrderInfoNotConfirmEntity orderInfoNotConfirmEntity = new OrderInfoNotConfirmEntity();
+        orderInfoNotConfirmEntity.setId(orderId);
+        eventHandler.broadcast(orderInfoNotConfirmEntity, eateryId, true);
         return ResponseEntity.ok().build();
     }
 }

@@ -75,7 +75,7 @@ public class DinerOrderController {
             orderInfoNotConfirmEntity.setTotalPrice(orderRequest.getTotalPrice());
             orderInfoNotConfirmEntity.setTypeId(orderRequest.getOrderTypeId());
 
-            eventHandler.broadcast(orderInfoNotConfirmEntity, orderRequest.getEateryId());
+            eventHandler.broadcast(orderInfoNotConfirmEntity, orderRequest.getEateryId(), false);
         }
         return ResponseEntity.ok().build();
     }
