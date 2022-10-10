@@ -16,10 +16,10 @@ public class StaffEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
     @Column
     private String name;
-    @Column(name="fk_management_role")
+    @Column(name = "fk_management_role")
     private Long roleId;
 }

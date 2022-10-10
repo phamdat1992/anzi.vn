@@ -20,6 +20,6 @@ public class EateryRoleEntity {
     private String name;
     @Column
     private String address;
-    @Column(name="role_id")
+    @Column(name = "role_id")
     private Long roleId;
 }

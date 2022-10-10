@@ -1,13 +1,9 @@
 package vn.anzi.modules.management.order.repository;
 
-import org.apache.el.stream.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import vn.anzi.modules.management.order.entity.OrderEntity;
 import vn.anzi.modules.management.order.entity.TotalDishByUserEntity;
-
-import java.util.List;
 
 @Repository
 public interface TotalDishByUserRepository extends JpaRepository<TotalDishByUserEntity, Integer> {
@@ -20,5 +16,5 @@ public interface TotalDishByUserRepository extends JpaRepository<TotalDishByUser
             ";",
             nativeQuery = true
     )
-    TotalDishByUserEntity  getTotalDishByUser(Long dinerId, Long tableId);
+    TotalDishByUserEntity getTotalDishByUser(Long dinerId, Long tableId);
 }

@@ -1,9 +1,11 @@
 package vn.anzi.modules.management.order.entity;
 
 import lombok.Data;
-import org.joda.time.DateTime;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "management_order")

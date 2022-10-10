@@ -32,7 +32,7 @@ public class DishService {
         dishEntity.setEateryId(dish.getEateryId());
         dishEntity.setName(dish.getName());
         dishEntity.setPrice(dish.getPrice());
-        dishEntity.setDishStatusId((long) (dish.getStatus()? 1 : 2));
+        dishEntity.setDishStatusId((long) (dish.getStatus() ? 1 : 2));
         dishEntity.setImage(imageName);
 
         dishRepository.save(dishEntity);
@@ -46,7 +46,7 @@ public class DishService {
         dishEntity.setEateryId(dish.getEateryId());
         dishEntity.setName(dish.getName());
         dishEntity.setPrice(dish.getPrice());
-        dishEntity.setDishStatusId((long) (dish.getStatus()? 1 : 2));
+        dishEntity.setDishStatusId((long) (dish.getStatus() ? 1 : 2));
         dishEntity.setImage(imageName);
         dishEntity.setId(dish.getId());
 
@@ -56,13 +56,13 @@ public class DishService {
     @Transactional(rollbackFor = Exception.class)
     public void updateDishWithoutImage(UpdateDishRequestDTO dish) {
         dishRepository.updateDishWithoutImage(
-            dish.getId(),
-            dish.getName(),
-            dish.getPrice(),
-            dish.getCode(),
-            dish.getEateryId(),
-            dish.getCategoryId(),
-            dish.getStatus()? 1L : 2L
+                dish.getId(),
+                dish.getName(),
+                dish.getPrice(),
+                dish.getCode(),
+                dish.getEateryId(),
+                dish.getCategoryId(),
+                dish.getStatus() ? 1L : 2L
         );
     }
 

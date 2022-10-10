@@ -2,7 +2,10 @@ package vn.anzi.modules.management.order.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "management_order")
@@ -12,14 +15,14 @@ public class OrderEventEntity {
 
     @Id
     private Long id;
-    @Column(name="fk_diner")
+    @Column(name = "fk_diner")
     private Long dinerId;
-    @Column(name="fk_management_table")
+    @Column(name = "fk_management_table")
     private Long tableId;
-    @Column(name="fk_management_order_type")
+    @Column(name = "fk_management_order_type")
     private Long orderTypeId;
     @Column
     private Boolean isConfirmed;
-    @Column (name="created_time")
+    @Column(name = "created_time")
     private String createdTime;
 }

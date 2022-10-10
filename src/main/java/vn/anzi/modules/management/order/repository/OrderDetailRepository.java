@@ -3,7 +3,6 @@ package vn.anzi.modules.management.order.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import vn.anzi.modules.management.order.entity.DishBucketEntity;
 import vn.anzi.modules.management.order.entity.OrderDetailEntity;
 
 import java.util.List;

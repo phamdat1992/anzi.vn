@@ -3,6 +3,8 @@ package vn.anzi.modules.diner.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.anzi.modules.diner.dto.*;
 import vn.anzi.modules.diner.services.AuthenticateDinerService;
 import vn.anzi.modules.diner.services.DinerOrderService;
@@ -13,14 +15,13 @@ import vn.anzi.modules.management.order.entity.OrderEventEntity;
 import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
 import vn.anzi.modules.management.order.model.EventHandler;
 import vn.anzi.modules.management.order.services.OrderService;
-import vn.anzi.modules.management.table.entity.TableEntity;
 import vn.anzi.modules.management.table.services.TableService;
 
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(path="/diner")
-public class DinerOrderController {
+@RequestMapping(path = "/diner")
+public class DinerOrderController implements WebMvcConfigurer {
 
     @Autowired
     private AuthenticateDinerService authenticateService;
@@ -42,6 +43,11 @@ public class DinerOrderController {
 
     @Autowired
     private TableService tableService;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @ResponseBody
     @PostMapping("/dish-info")

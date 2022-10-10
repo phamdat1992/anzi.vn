@@ -17,10 +17,10 @@ public class OrderInfoConfirmedEntity {
     private String name;
     @Column
     private String location;
-    @Column (name="total_dish")
+    @Column(name = "total_dish")
     private Long totalDish;
-    @Column (name="total_price")
+    @Column(name = "total_price")
     private Long totalPrice;
-    @Column (name="created_time")
+    @Column(name = "created_time")
     private String createdTime;
 }

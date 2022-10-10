@@ -3,6 +3,8 @@ package vn.anzi.modules.management.dish.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.anzi.modules.management.category.services.CategoryService;
 import vn.anzi.modules.management.dish.dto.*;
 import vn.anzi.modules.management.dish.services.DishService;
@@ -12,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path="/management/dish")
-public class DishController {
+@RequestMapping(path = "/management/dish")
+public class DishController implements WebMvcConfigurer {
 
     @Autowired
     private DishService dishService;
@@ -23,6 +25,11 @@ public class DishController {
 
     @Autowired
     private FileManageService fileManageService;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @PostMapping("")
     public ResponseEntity<NewDishResponseDTO> createNewDish(@RequestBody NewDishRequestDTO newEateryRequestDTO, HttpServletRequest request) throws Exception {

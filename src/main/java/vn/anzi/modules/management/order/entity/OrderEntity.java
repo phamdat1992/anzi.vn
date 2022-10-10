@@ -13,11 +13,11 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="fk_diner")
+    @Column(name = "fk_diner")
     private Long dinerId;
-    @Column(name="fk_management_table")
+    @Column(name = "fk_management_table")
     private Long tableId;
-    @Column(name="fk_management_order_type")
+    @Column(name = "fk_management_order_type")
     private Long orderTypeId;
     @Column
     private Boolean isConfirmed;

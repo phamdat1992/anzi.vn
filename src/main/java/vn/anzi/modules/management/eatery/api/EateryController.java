@@ -1,10 +1,11 @@
 package vn.anzi.modules.management.eatery.api;
 
-import com.amazonaws.services.dynamodbv2.model.TableAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.anzi.modules.management.category.services.CategoryService;
 import vn.anzi.modules.management.dish.services.DishService;
 import vn.anzi.modules.management.eatery.dto.DeleteEateryRequestDTO;
@@ -22,8 +23,8 @@ import vn.anzi.modules.management.user.services.StaffService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(path="/management/eatery")
-public class EateryController {
+@RequestMapping(path = "/management/eatery")
+public class EateryController implements WebMvcConfigurer {
     @Autowired
     private EateryService eateryService;
 
@@ -41,6 +42,11 @@ public class EateryController {
 
     @Autowired
     private StaffService staffService;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @PostMapping("")
     public ResponseEntity<NewEateryResponseDTO> createNewEatery(@RequestBody NewEateryRequestDTO newEateryRequestDTO, HttpServletRequest request) {

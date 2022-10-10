@@ -18,7 +18,7 @@ public interface UserEateryRepository extends JpaRepository<UserEateryEntity, Lo
             "and id=:id ; ",
             nativeQuery = true
     )
-    void removeUserByUserId(@Param("id")Long id);
+    void removeUserByUserId(@Param("id") Long id);
 
     @Query(value = "select * " +
             "from management_user_eatery " +

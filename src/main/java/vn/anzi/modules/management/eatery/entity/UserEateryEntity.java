@@ -18,14 +18,14 @@ public class UserEateryEntity {
     private Long id;
     @Column
     private String name;
-    @Column(name="fk_management_user")
+    @Column(name = "fk_management_user")
     private Long userId;
-    @Column(name="fk_management_eatery")
+    @Column(name = "fk_management_eatery")
     private Long eateryId;
 
-    @Column(name="fk_management_role")
+    @Column(name = "fk_management_role")
     private Long roleId;
 
-    @Column(name="is_active")
+    @Column(name = "is_active")
     private Boolean isActive;
 }

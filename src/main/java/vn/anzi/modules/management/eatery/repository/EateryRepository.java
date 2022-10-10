@@ -16,5 +16,5 @@ public interface EateryRepository extends JpaRepository<EateryEntity, Long> {
             "where id=:id ; ",
             nativeQuery = true
     )
-    void deleteEateryById(@Param("id")Long eateryId);
+    void deleteEateryById(@Param("id") Long eateryId);
 }

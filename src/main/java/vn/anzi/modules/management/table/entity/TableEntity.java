@@ -20,8 +20,8 @@ public class TableEntity {
     private String name;
     @Column
     private String location;
-    @Column(name="fk_management_eatery")
+    @Column(name = "fk_management_eatery")
     private Long eateryId;
-    @Column(name="is_active")
+    @Column(name = "is_active")
     private Boolean isActive;
 }

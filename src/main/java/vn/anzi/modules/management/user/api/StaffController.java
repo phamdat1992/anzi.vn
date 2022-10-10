@@ -3,6 +3,8 @@ package vn.anzi.modules.management.user.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.anzi.modules.management.eatery.entity.UserEateryEntity;
 import vn.anzi.modules.management.eatery.services.EateryService;
 import vn.anzi.modules.management.role.services.RoleService;
@@ -13,8 +15,8 @@ import vn.anzi.modules.management.user.services.StaffService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(path="/management/staff")
-public class StaffController {
+@RequestMapping(path = "/management/staff")
+public class StaffController implements WebMvcConfigurer {
 
     @Autowired
     private AuthenticateUserService authenticateUserService;
@@ -27,6 +29,11 @@ public class StaffController {
 
     @Autowired
     private EateryService eateryService;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @GetMapping("/{eateryId}")
     public ResponseEntity<GetAllStaffResponseDTO> getAllStaff(@PathVariable Long eateryId, HttpServletRequest request) {

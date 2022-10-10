@@ -9,7 +9,6 @@ import vn.anzi.modules.management.table.entity.TableEntity;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data

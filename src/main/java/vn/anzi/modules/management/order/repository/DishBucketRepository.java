@@ -4,8 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import vn.anzi.modules.management.order.entity.DishBucketEntity;
-import vn.anzi.modules.management.order.entity.OrderDishEntity;
-import vn.anzi.modules.management.order.entity.OrderEntity;
 
 import java.util.List;
 

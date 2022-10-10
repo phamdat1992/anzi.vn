@@ -18,8 +18,8 @@ public class CategoryEntity {
     private Long id;
     @Column
     private String name;
-    @Column(name="fk_management_eatery")
+    @Column(name = "fk_management_eatery")
     private Long eateryId;
-    @Column(name="is_active")
+    @Column(name = "is_active")
     private Boolean isActive;
 }

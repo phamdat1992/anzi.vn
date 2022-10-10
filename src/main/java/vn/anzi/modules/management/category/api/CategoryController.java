@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.anzi.modules.management.category.dto.*;
 import vn.anzi.modules.management.category.entity.CategoryEntity;
 import vn.anzi.modules.management.category.services.CategoryService;
@@ -14,8 +16,8 @@ import vn.anzi.modules.management.user.services.AuthenticateUserService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(path="/management/category")
-public class CategoryController {
+@RequestMapping(path = "/management/category")
+public class CategoryController implements WebMvcConfigurer {
 
     @Autowired
     private AuthenticateUserService authenticateUserService;
@@ -25,6 +27,11 @@ public class CategoryController {
 
     @Autowired
     private DishService dishService;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @PostMapping("")
     public ResponseEntity<NewCategoryResponseDTO> createEatery(@RequestBody NewCategoryRequestDTO newCategoryRequestDTO, HttpServletRequest request) {
@@ -56,7 +63,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("")
-    public ResponseEntity<Void> deleteCategory (@RequestBody DeleteCategoryRequestDTO category, HttpServletRequest request) {
+    public ResponseEntity<Void> deleteCategory(@RequestBody DeleteCategoryRequestDTO category, HttpServletRequest request) {
         categoryService.deleteCategory(category.getId());
         dishService.deleteDishByCategoryId(category.getId());
         return ResponseEntity.ok().build();

@@ -3,24 +3,31 @@ package vn.anzi.modules.management.order.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import vn.anzi.modules.management.order.dto.*;
 import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
 import vn.anzi.modules.management.order.model.EventHandler;
 import vn.anzi.modules.management.order.services.OrderService;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/management/order")
-public class OrderController {
+@RequestMapping(path = "/management/order")
+public class OrderController implements WebMvcConfigurer {
 
     @Autowired
     private OrderService orderService;
 
     @Autowired
     private EventHandler eventHandler;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @GetMapping("/register-client/{eateryId}")
     public SseEmitter sseEmitter(@PathVariable Long eateryId, HttpServletRequest request) {

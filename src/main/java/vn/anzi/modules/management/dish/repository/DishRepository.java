@@ -26,7 +26,7 @@ public interface DishRepository extends JpaRepository<DishEntity, Long> {
             "where fk_management_category=:id ; ",
             nativeQuery = true
     )
-    void deleteDishByCategoryId(@Param("id")Long categoryId);
+    void deleteDishByCategoryId(@Param("id") Long categoryId);
 
     @Query(value = "select * " +
             "from management_dish " +
@@ -43,13 +43,13 @@ public interface DishRepository extends JpaRepository<DishEntity, Long> {
             nativeQuery = true
     )
     void updateDishWithoutImage(
-            @Param("id")Long id,
-            @Param("name")String name,
-            @Param("price")Long price,
-            @Param("code")String code,
-            @Param("eateryId")Long eateryId,
-            @Param("categoryId")Long categoryId,
-            @Param("status")Long status
+            @Param("id") Long id,
+            @Param("name") String name,
+            @Param("price") Long price,
+            @Param("code") String code,
+            @Param("eateryId") Long eateryId,
+            @Param("categoryId") Long categoryId,
+            @Param("status") Long status
     );
 
     @Modifying
@@ -58,7 +58,7 @@ public interface DishRepository extends JpaRepository<DishEntity, Long> {
             "where id=:id ; ",
             nativeQuery = true
     )
-    void deleteDishById(@Param("id")Long id);
+    void deleteDishById(@Param("id") Long id);
 
     @Modifying
     @Query(value = "update management_dish " +
@@ -66,5 +66,5 @@ public interface DishRepository extends JpaRepository<DishEntity, Long> {
             "where fk_management_eatery=:id ; ",
             nativeQuery = true
     )
-    void deleteDishByEateryId(@Param("id")Long eateryId);
+    void deleteDishByEateryId(@Param("id") Long eateryId);
 }

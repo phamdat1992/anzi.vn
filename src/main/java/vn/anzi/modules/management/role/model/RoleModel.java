@@ -7,17 +7,18 @@ public enum RoleModel {
     STAFF(1),
     MANAGER(2);
 
-    private int value;
-    private static Map map = new HashMap<>();
-
-    RoleModel(int value) {
-        this.value = value;
-    }
+    private static final Map map = new HashMap<>();
 
     static {
         for (RoleModel status : RoleModel.values()) {
             RoleModel.map.put(status.value, status);
         }
+    }
+
+    private final int value;
+
+    RoleModel(int value) {
+        this.value = value;
     }
 
     public static RoleModel valueOf(int contractUserRole) {

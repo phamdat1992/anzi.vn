@@ -10,5 +10,6 @@ import java.util.Optional;
 @Repository
 public interface OrderDishRepository extends JpaRepository<OrderDishEntity, Integer> {
     Optional<OrderDishEntity> findById(Long orderId);
+
     List<OrderDishEntity> getAllByOrderId(Long orderId);
 }

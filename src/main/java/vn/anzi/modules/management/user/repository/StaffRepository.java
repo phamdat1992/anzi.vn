@@ -18,7 +18,7 @@ public interface StaffRepository extends JpaRepository<StaffEntity, Long> {
             "from management_user_eatery " +
             "left join management_user  on management_user.id=management_user_eatery.fk_management_user " +
             "where management_user_eatery.fk_management_eatery=:eateryId " +
-            "and management_user_eatery.is_active=1 ;" ,
+            "and management_user_eatery.is_active=1 ;",
             nativeQuery = true
     )
     List<StaffEntity> getAllStaffByEateryId(Long eateryId);
@@ -29,5 +29,5 @@ public interface StaffRepository extends JpaRepository<StaffEntity, Long> {
             "where fk_management_eatery=:id ; ",
             nativeQuery = true
     )
-    void deleteStaffByEateryId(@Param("id")Long eateryId);
+    void deleteStaffByEateryId(@Param("id") Long eateryId);
 }

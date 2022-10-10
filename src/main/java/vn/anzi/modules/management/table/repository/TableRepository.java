@@ -25,7 +25,7 @@ public interface TableRepository extends JpaRepository<TableEntity, Long> {
             "where id=:id ; ",
             nativeQuery = true
     )
-    void updateTable(@Param("id")Long id, @Param("name")String name, @Param("location")String location);
+    void updateTable(@Param("id") Long id, @Param("name") String name, @Param("location") String location);
 
     @Modifying
     @Query(value = "update management_table " +
@@ -33,7 +33,7 @@ public interface TableRepository extends JpaRepository<TableEntity, Long> {
             "where id=:id ; ",
             nativeQuery = true
     )
-    void deleteTable(@Param("id")Long id);
+    void deleteTable(@Param("id") Long id);
 
     @Modifying
     @Query(value = "update management_table " +
@@ -41,5 +41,5 @@ public interface TableRepository extends JpaRepository<TableEntity, Long> {
             "where fk_management_eatery=:id ; ",
             nativeQuery = true
     )
-    void deleteTableByEateryId(@Param("id")Long eateryId);
+    void deleteTableByEateryId(@Param("id") Long eateryId);
 }

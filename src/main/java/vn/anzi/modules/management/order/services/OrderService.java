@@ -39,11 +39,11 @@ public class OrderService {
         }
     }
 
-    public List<OrderInfoNotConfirmEntity>getOrderFromOffset(Long eateryId, Long tableId) {
+    public List<OrderInfoNotConfirmEntity> getOrderFromOffset(Long eateryId, Long tableId) {
         return orderInfoNotConfirmRepository.getOrderFromOffset(eateryId, tableId);
     }
 
-    public List<OrderInfoNotConfirmEntity>getOrderHostessFromOffset(Long eateryId, Long orderId) {
+    public List<OrderInfoNotConfirmEntity> getOrderHostessFromOffset(Long eateryId, Long orderId) {
         return orderInfoNotConfirmRepository.getOrderHostessFromOffset(eateryId, orderId);
     }
 

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.anzi.modules.management.user.dto.AuthenticateRequestDTO;
 import vn.anzi.modules.management.user.entity.UserEntity;
 import vn.anzi.modules.management.user.services.AuthenticateUserService;
@@ -17,8 +19,8 @@ import vn.anzi.modules.management.user.services.AuthenticateUserService;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(path="/management/user/authenticate")
-public class AuthenticateUserController {
+@RequestMapping(path = "/management/user/authenticate")
+public class AuthenticateUserController implements WebMvcConfigurer {
     @Autowired
     private AuthenticateUserService authenticateService;
 
@@ -27,6 +29,11 @@ public class AuthenticateUserController {
 
     @Value("${authenticate.user.cookie.id}")
     private String authenticateUserCookieId;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @PostMapping("")
     public ResponseEntity<Void> authenticateUser(@RequestBody AuthenticateRequestDTO authenticate, HttpServletRequest request) {

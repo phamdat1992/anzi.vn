@@ -27,7 +27,7 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> 
             "where id=:id ; ",
             nativeQuery = true
     )
-    void deleteCategory(@Param("id")Long id);
+    void deleteCategory(@Param("id") Long id);
 
     @Modifying
     @Query(value = "update management_category " +
@@ -35,5 +35,5 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> 
             "where fk_management_eatery=:id ; ",
             nativeQuery = true
     )
-    void deleteCategoryByEateryId(@Param("id")Long eateryId);
+    void deleteCategoryByEateryId(@Param("id") Long eateryId);
 }

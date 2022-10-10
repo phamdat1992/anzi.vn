@@ -5,20 +5,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
 
-import java.io.IOException;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+
 import static org.springframework.web.servlet.mvc.method.annotation.SseEmitter.event;
 
 @Component
 public class EventHandler {
 
+    public static final long DEFAULT_TIMEOUT = 86_400_000L;
     private static final String MESsAGE_TYPE = "order";
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(1);
-    public static final long DEFAULT_TIMEOUT = 86_400_000L;
-    private final Set<Client> registeredClients = new HashSet<>();
+    private final List<Client> registeredClients = new CopyOnWriteArrayList<>();
 
     public SseEmitter registerClient(Long eateryId) {
         var emitter = new SseEmitter(DEFAULT_TIMEOUT);
@@ -42,7 +43,7 @@ public class EventHandler {
 
     public void broadcast(OrderInfoNotConfirmEntity order, Long eateryId, Boolean isConfirmed) {
         Set<Client> clients = Set.copyOf(registeredClients);
-        for (Client client: clients) {
+        for (Client client : clients) {
             if (Objects.equals(client.getEateryId(), eateryId)) {
                 OrderServerEvent orderEvent = new OrderServerEvent();
                 orderEvent.setId(order.getId());
@@ -67,9 +68,8 @@ public class EventHandler {
                     .data(event, MediaType.APPLICATION_JSON);
             sseEmitter.send(eventBuilder);
             sseEmitter.complete();
-        } catch (IOException e) {
+        } catch (Exception e) {
             sseEmitter.completeWithError(e);
         }
     }
-
 }

@@ -27,87 +27,87 @@ import java.util.regex.Pattern;
 
 @Service
 public class FileManageService {
-	@Value("${s3.Properties.endpointUrl}")
-	private String endpointUrl;
-	@Value("${s3.Properties.bucketName}")
-	private String bucketName;
-	@Value("${s3.Properties.accessKey}")
-	private String accessKey;
-	@Value("${s3.Properties.secretKey}")
-	private String secretKey;
+    @Value("${s3.Properties.endpointUrl}")
+    private String endpointUrl;
+    @Value("${s3.Properties.bucketName}")
+    private String bucketName;
+    @Value("${s3.Properties.accessKey}")
+    private String accessKey;
+    @Value("${s3.Properties.secretKey}")
+    private String secretKey;
 
-	private AmazonS3 s3Client;
+    private AmazonS3 s3Client;
 
-	@PostConstruct
-	public void initializeS3() {
-		this.s3Client = initS3Client();
-	}
+    public static String extractMimeType(final String encoded) {
+        final Pattern mime = Pattern.compile("^data:([a-zA-Z0-9]+/[a-zA-Z0-9]+).*,.*");
+        final Matcher matcher = mime.matcher(encoded);
 
-	private AmazonS3 initS3Client() {
-		AWSCredentials credentials = new BasicAWSCredentials(
-				accessKey,
-				secretKey
-		);
-		ClientConfiguration config = new ClientConfiguration();
-		config.setSignerOverride("S3SignerType");
-		AmazonS3 s3Client = AmazonS3ClientBuilder
-				.standard()
-				.withCredentials(new AWSStaticCredentialsProvider(credentials))
-				.withEndpointConfiguration(
-						new AwsClientBuilder.EndpointConfiguration(
-								endpointUrl,
-								null
-						)
-				)
-				.enablePathStyleAccess()
-				.withClientConfiguration(config)
-				.build();
-		return s3Client;
-	}
+        if (!matcher.find()) {
+            return "";
+        }
 
-	public void uploadFile(String fileName, String base64) throws Exception {
-		try {
-			String data = base64.replaceFirst("^data:image/[^;]*;base64,?","");
-			InputStream uploadStream = new ByteArrayInputStream(Base64.getDecoder().decode(data));
-			ObjectMetadata metadata = new ObjectMetadata();
-			metadata.setContentType(extractMimeType(base64));
-			this.s3Client.putObject(this.bucketName, fileName, uploadStream, metadata);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Exception("upload fail");
-		}
-	}
+        return matcher.group(1).toLowerCase();
+    }
 
-	public byte[] getFileObject(String keyName) throws IOException {
-		byte[] content = null;
-		S3Object s3Object = s3Client.getObject(bucketName, keyName);
-		S3ObjectInputStream is = s3Object.getObjectContent();
-		content = IOUtils.toByteArray(is);
-		s3Object.close();
-		return content;
-	}
+    @PostConstruct
+    public void initializeS3() {
+        this.s3Client = initS3Client();
+    }
 
-	public String deleteFileOnS3(String keyName) {
-		s3Client.deleteObject(bucketName, keyName);
-		return keyName;
-	}
+    private AmazonS3 initS3Client() {
+        AWSCredentials credentials = new BasicAWSCredentials(
+                accessKey,
+                secretKey
+        );
+        ClientConfiguration config = new ClientConfiguration();
+        config.setSignerOverride("S3SignerType");
+        AmazonS3 s3Client = AmazonS3ClientBuilder
+                .standard()
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withEndpointConfiguration(
+                        new AwsClientBuilder.EndpointConfiguration(
+                                endpointUrl,
+                                null
+                        )
+                )
+                .enablePathStyleAccess()
+                .withClientConfiguration(config)
+                .build();
+        return s3Client;
+    }
 
-	public byte[] pngBytesToJpgBytes(byte[] pngBytes) throws IOException {
-		ByteArrayInputStream baIns = new ByteArrayInputStream(pngBytes);
-		BufferedImage bufferedImage = ImageIO.read(baIns);
-		ByteArrayOutputStream baOuts = new ByteArrayOutputStream();
-		ImageIO.write(bufferedImage, "JPG", baOuts);
-		return baOuts.toByteArray();
-	}
+    public void uploadFile(String fileName, String base64) throws Exception {
+        try {
+            String data = base64.replaceFirst("^data:image/[^;]*;base64,?", "");
+            InputStream uploadStream = new ByteArrayInputStream(Base64.getDecoder().decode(data));
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentType(extractMimeType(base64));
+            this.s3Client.putObject(this.bucketName, fileName, uploadStream, metadata);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("upload fail");
+        }
+    }
 
-	public static String extractMimeType(final String encoded) {
-		final Pattern mime = Pattern.compile("^data:([a-zA-Z0-9]+/[a-zA-Z0-9]+).*,.*");
-		final Matcher matcher = mime.matcher(encoded);
+    public byte[] getFileObject(String keyName) throws IOException {
+        byte[] content = null;
+        S3Object s3Object = s3Client.getObject(bucketName, keyName);
+        S3ObjectInputStream is = s3Object.getObjectContent();
+        content = IOUtils.toByteArray(is);
+        s3Object.close();
+        return content;
+    }
 
-		if (!matcher.find()) {
-			return "";
-		}
+    public String deleteFileOnS3(String keyName) {
+        s3Client.deleteObject(bucketName, keyName);
+        return keyName;
+    }
 
-		return matcher.group(1).toLowerCase();
-	}
+    public byte[] pngBytesToJpgBytes(byte[] pngBytes) throws IOException {
+        ByteArrayInputStream baIns = new ByteArrayInputStream(pngBytes);
+        BufferedImage bufferedImage = ImageIO.read(baIns);
+        ByteArrayOutputStream baOuts = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "JPG", baOuts);
+        return baOuts.toByteArray();
+    }
 }

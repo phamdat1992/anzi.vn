@@ -3,13 +3,11 @@ package vn.anzi.modules.diner.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vn.anzi.modules.diner.dto.DishInfoResponseDTO;
 import vn.anzi.modules.diner.dto.OrderItemDTO;
 import vn.anzi.modules.diner.dto.OrderRequestDTO;
 import vn.anzi.modules.management.category.repository.CategoryRepository;
 import vn.anzi.modules.management.dish.repository.DishRepository;
 import vn.anzi.modules.management.image.reporitory.DishImageRepository;
-import vn.anzi.modules.management.image.reporitory.ImageRepository;
 import vn.anzi.modules.management.order.entity.OrderDishEntity;
 import vn.anzi.modules.management.order.entity.OrderEntity;
 import vn.anzi.modules.management.order.repository.OrderDishRepository;
@@ -32,7 +30,7 @@ public class DinerOrderService {
     private OrderDishRepository orderDishRepository;
 
     public void createListOrder(OrderRequestDTO orderRequest, OrderEntity orderEntity) {
-        for (OrderItemDTO order: orderRequest.getDishInfo()) {
+        for (OrderItemDTO order : orderRequest.getDishInfo()) {
             createNewDishInOrderEntity(orderEntity, order);
         }
     }

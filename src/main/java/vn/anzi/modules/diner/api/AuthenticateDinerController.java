@@ -9,14 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import vn.anzi.modules.diner.entity.DinerEntity;
 import vn.anzi.modules.diner.services.AuthenticateDinerService;
 
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(path="/diner/authenticate")
-public class AuthenticateDinerController {
+@RequestMapping(path = "/diner/authenticate")
+public class AuthenticateDinerController implements WebMvcConfigurer {
 
     @Autowired
     private AuthenticateDinerService authenticateService;
@@ -26,6 +28,11 @@ public class AuthenticateDinerController {
 
     @Value("${authenticate.diner.cookie.id}")
     private String authenticateDinerCookieId;
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configure) {
+        configure.setDefaultTimeout(86_400_000L);
+    }
 
     @PostMapping("")
     public ResponseEntity<Void> authenticateDiner(HttpServletRequest request) {
