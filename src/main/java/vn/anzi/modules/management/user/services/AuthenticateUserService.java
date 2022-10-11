@@ -95,7 +95,7 @@ public class AuthenticateUserService {
                 //.sameSite("strict")
                 //.secure(true)
                 .maxAge(Integer.parseInt(this.authenticateTokenTimeLiveInSecond))
-                .path("/api")
+                .path("/")
                 .build();
     }
 }
