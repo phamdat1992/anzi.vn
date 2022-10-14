@@ -1,6 +1,7 @@
 package vn.anzi.modules.management.order.model;
 
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import vn.anzi.modules.management.order.entity.OrderInfoNotConfirmEntity;
@@ -41,6 +42,7 @@ public class EventHandler {
         registeredClients.remove(client);
     }
 
+    @Async
     public void broadcast(OrderInfoNotConfirmEntity order, Long eateryId, Boolean isConfirmed) {
         Set<Client> clients = Set.copyOf(registeredClients);
         for (Client client : clients) {
