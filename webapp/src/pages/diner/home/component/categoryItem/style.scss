@@ -1,0 +1,16 @@
+.selectCategoryModal {
+    .categoryList {
+        a {
+            text-decoration: none;
+
+            .categoryItem {
+                font-size: 17px;
+                font-weight: bold;
+                color: #1476bf;
+                padding: 25px 0px 25px 0px;
+                border-bottom: 1px solid lightblue;
+                text-align: center;
+            }
+        }
+    }
+}

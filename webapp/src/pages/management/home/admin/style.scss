@@ -1,0 +1,145 @@
+.adminPage {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+
+    .header {
+        height: 200px;
+        position: fixed;
+        width: 100%;
+        top: 0px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        background-image: url("../../../../asset/image/menu-header-background.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+
+        .back {
+            position: relative;
+            height: inherit;
+            width: 120px;
+            z-index: 3;
+
+            .backIcon {
+                margin: auto;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                background-color: white;
+                background-image: url("../../../../asset/image/small-left.png");
+                background-repeat: no-repeat;
+                background-position: 15px;
+            }
+        }
+
+        .title {
+            position: relative;
+            height: inherit;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            .adminTitle {
+                color: white;
+                font-weight: bold;
+                font-size: 28px;
+            }
+        }
+    }
+
+    .body {
+        margin-top: 200px;
+
+        .inputData {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+    
+            input {
+                margin: 10px 0px;
+            }
+        }
+    
+        .content {
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+    
+            .qrCode {
+                position: absolute;
+                width: 650px;
+                height: 650px;
+                bottom: 455px;
+                right: 300px;
+                overflow: hidden;
+            }
+    
+            .tableName {
+                position: absolute;
+                height: 230px;
+                width: 100%;
+                top: 125px;
+                color: white;
+                font-size: 185px;
+                font-weight: 900;
+                text-align: center;
+                align-items: center;
+                line-height: 230px;
+                font-family: 'Montserrat', sans-serif;
+                color: #00a652;
+                text-shadow: 5px 0px 0px #ffffff, 0px 5px 0px #ffffff, -5px 0px 0px #ffffff, 0px -5px 0px #ffffff, -5px -5px 0px #ffffff, 5px 5px 0px #ffffff, 5px -5px 0px #ffffff, -5px 5px 0px #ffffff;
+            }
+    
+            .info {
+                position: absolute;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                width: 1395px;
+                bottom: 130px;
+                height: 115px;
+                right: 0px;
+                align-items: center;
+                font-size: 45px;
+                color: #3a6ab4;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+            }
+    
+            .footer {
+                bottom: 0px;
+                position: absolute;
+                color: white;
+                font-size: 30px;
+                font-style: italic;
+                width: 870px;
+                height: 125px;
+                right: 431px;
+                text-align: center;
+                align-items: center;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+    
+                p {
+                    margin: auto;
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    top: 0;
+                    bottom: 0;
+                    position: absolute;
+                    height: fit-content;
+                    width: inherit;
+                }
+            }
+        }
+    }
+}

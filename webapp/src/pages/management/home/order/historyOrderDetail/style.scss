@@ -1,0 +1,106 @@
+.management {
+    .historyOrderDetail {
+        height: 100vh;
+        position: relative;
+
+        .header {
+            position: relative;
+            height: 200px;
+            background-image: url("../../../../../asset/image/menu-header-background.png");
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+    
+            .title {
+                font-weight: bold;
+                color: white;
+                font-size: 35px;
+            }
+
+            .location {
+                color: white;
+            }
+    
+            .back {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                background-color: white;
+                left: 30px;
+                background-image: url("../../../../../asset/image/small-left.png");
+                background-repeat: no-repeat;
+                background-position: 15px;
+            }
+        }
+    
+        .body {
+            width: 100%;
+            height: calc(100vh - 301px);
+            background-color: white;
+            padding: 0px 20px 0px 20px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+    
+            .blurTop {
+                position: sticky;
+                height: 25px;
+                top: 0px;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                opacity: 0.8;
+                background-color: white;
+            }
+    
+            .blurBottom {
+                position: sticky;
+                height: 25px;
+                bottom: 0px;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                opacity: 0.8;
+                background-color: white;
+                box-shadow: 0px 1px 0px 0px lightgrey;
+            }
+        }
+    
+        .footer {
+            position: fixed;
+            z-index: 10;
+            bottom: 0px;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            justify-content: center;
+            color: #1a75bb;
+            font-weight: bold;
+            font-size: 17px;
+            background-color: white;
+        }
+    }
+}
+
+@media all and (hover: hover) and (pointer: fine) {
+    .management {
+        .historyOrderDetail {
+            width: 33%;
+            min-width: 450px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+
+            .footer {
+                position: absolute;
+            }
+        }
+    }
+}

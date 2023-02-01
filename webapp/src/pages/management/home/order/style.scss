@@ -1,0 +1,112 @@
+.management {
+    .OrderPage {
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    
+        .header {
+            height: 200px;
+            position: relative;
+            width: 100%;
+            top: 0px;
+            overflow: hidden;
+            background-image: url("../../../../asset/image/menu-header-background.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            .toast {
+                width: fit-content;
+
+                .toast-body {
+                    color: #2690fc;
+                    width: -moz-fit-content;
+                    width: fit-content;
+                    font-weight: bold;
+                }
+            }
+    
+            .back {
+                position: relative;
+                height: inherit;
+                width: 120px;
+                z-index: 3;
+    
+                .backIcon {
+                    margin: auto;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    background-color: white;
+                    background-image: url("../../../../asset/image/small-left.png");
+                    background-repeat: no-repeat;
+                    background-position: 15px;
+                }
+            }
+    
+            .title {
+                position: absolute;
+                width: inherit;
+                height: inherit;
+                top: 0px;
+                text-align: center;
+                line-height: 200px;
+                color: white;
+                font-weight: bold;
+                font-size: 30px;
+            }
+        }
+    
+        .menuTab {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 60px;
+            background-color: #f2f2f2;
+    
+            .iconSeparate {
+                font-size: 25px;
+                color: #1575bf;
+            }
+    
+            .item {
+                height: 45px;
+                text-align: center;
+                line-height: 45px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: #1a75bb;
+                font-weight: bold;
+                font-size: 17px;
+            }
+    
+            .active {
+                border: 1px solid #1a75bb;
+                border-radius: 15px;
+                background-color: white;
+            }
+        }
+    }
+}
+
+@media all and (hover: hover) and (pointer: fine) {
+    .management {
+        .OrderPage {
+            width: 33%;
+            min-width: 450px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+        }
+    }
+}

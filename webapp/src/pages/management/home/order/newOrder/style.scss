@@ -1,0 +1,63 @@
+.management {
+    .OrderPage {
+        .NewOrderSubPage {
+            width: 100vw;
+            height: calc(100vh - 261px);
+            overflow: hidden;
+    
+            .content {
+                width: 100%;
+                padding: 0px 20px 0px 20px;
+                height: calc(100vh - 261px);
+                overflow-y: scroll;
+                overflow-x: hidden;
+    
+                .blurTop {
+                    position: sticky;
+                    height: 25px;
+                    top: 0px;
+                    left: 0;
+                    right: 0;
+                    z-index: 1;
+                    opacity: 0.8;
+                    background-color: white;
+                }
+        
+                .blurBottom {
+                    position: sticky;
+                    height: 25px;
+                    bottom: 0px;
+                    left: 0;
+                    right: 0;
+                    z-index: 1;
+                    opacity: 0.8;
+                    background-color: white;
+                }
+    
+                .orderList {
+                    position: relative;
+                    margin-top: 0px;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}
+
+@media all and (hover: hover) and (pointer: fine) {
+    .management {
+        .OrderPage {
+            .NewOrderSubPage {
+                width: 33%;
+                min-width: 450px;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0;
+                overflow: hidden;
+            }
+        }
+    }
+}

@@ -1,0 +1,142 @@
+.management {
+    .menuPage {
+        width: 100vw;
+        height: 100vh;
+        background-image: url("../../../../asset/image/menu-background.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        .header {
+            height: 200px;
+            position: fixed;
+            width: 100%;
+            top: 0px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+    
+            .back {
+                position: relative;
+                height: inherit;
+                width: 120px;
+                z-index: 3;
+    
+                .backIcon {
+                    margin: auto;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    background-color: white;
+                    background-image: url("../../../../asset/image/small-left.png");
+                    background-repeat: no-repeat;
+                    background-position: 15px;
+                }
+            }
+    
+            .title {
+                position: relative;
+                height: inherit;
+                width: fit-content;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+    
+                .eateryName {
+                    color: white;
+                    font-weight: bold;
+                    font-size: 28px;
+                }
+    
+                .eateryAddress {
+                    color: white;
+                    font-size: 16px;
+                }
+            }
+        }
+    
+        .menuItem {
+            z-index: 1;
+            width: 70%;
+            
+            .item {
+                width: 100%;
+                min-width: 250px;
+                height: 85px;
+                background-color: white;
+                border-radius: 20px;
+                color: #1b75ba;
+                line-height: 85px;
+                font-weight: bold;
+                font-size: 18px;
+                padding-left: 95px;
+            }
+    
+            .order {
+                background-image: url("../../../../asset/image/order-manage-icon.png");
+                background-repeat: no-repeat;
+                background-size: 45px;
+                background-position: 25px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+    
+            .dish {
+                background-image: url("../../../../asset/image/dish-manage-icon.png");
+                background-repeat: no-repeat;
+                background-size: 45px;
+                background-position: 25px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+    
+            .table {
+                background-image: url("../../../../asset/image/table-manage-icon.png");
+                background-repeat: no-repeat;
+                background-size: 45px;
+                background-position: 25px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+    
+            .staff {
+                background-image: url("../../../../asset/image/staff-manage-icon.png");
+                background-repeat: no-repeat;
+                background-size: 45px;
+                background-position: 25px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+@media all and (hover: hover) and (pointer: fine) {
+    .management {
+        .menuPage {
+            width: 33%;
+            min-width: 450px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            position: relative;
+
+            .header {
+                position: absolute;
+            }
+        }
+    }
+}

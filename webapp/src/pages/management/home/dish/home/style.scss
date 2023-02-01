@@ -1,0 +1,106 @@
+.management {
+    .dishBody {
+        .homeSubPage {
+            width: 100vw;
+            height: calc(100vh - 261px);
+            overflow: hidden;
+            position: relative;
+    
+            .content {
+                width: 100%;
+                padding: 0px 20px 0px 20px;
+                height: calc(100vh - 446px);
+                overflow-y: scroll;
+                overflow-x: hidden;
+    
+                .blurTop {
+                    position: sticky;
+                    height: 25px;
+                    top: 0px;
+                    left: 0;
+                    right: 0;
+                    z-index: 1;
+                    opacity: 0.8;
+                    background-color: white;
+                }
+        
+                .blurBottom {
+                    position: sticky;
+                    height: 25px;
+                    bottom: 0px;
+                    left: 0;
+                    right: 0;
+                    z-index: 1;
+                    opacity: 0.8;
+                    background-color: white;
+                }
+    
+                .category {
+                    margin-top: 15px;
+                    
+                    .categoryName {
+                        color: #1976bd;
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
+    
+                    .endLine {
+                        width: 70%;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            }
+    
+            .footer {
+                position: fixed;
+                bottom: 0px;
+                width: inherit;
+                height: 185px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+        
+                .addDish {
+                    position: relative;
+                    width: 80%;
+                    min-width: 325px;
+                    height: 85px;
+                    background-color: #f2f2f2;
+                    border-radius: 20px;
+                    line-height: 85px;
+                    text-align: center;
+                    color: #838698;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media all and (hover: hover) and (pointer: fine) {
+    .management {
+        .dishBody {
+            .homeSubPage {
+                width: 33%;
+                min-width: 450px;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0;
+                overflow: hidden;
+
+                .footer {
+                    position: absolute;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

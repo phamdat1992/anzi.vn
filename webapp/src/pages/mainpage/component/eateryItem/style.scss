@@ -1,0 +1,41 @@
+.mainPage{
+    .listEatery {
+        .eateryItem {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 5px 0px;
+    
+            img {
+                height: 85px;
+                width: 85px;
+            }
+    
+            .eateryInfo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                padding: 0px 5px 0px 15px;
+    
+                .eateryName {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: #1576fb;
+                }
+    
+                .eateryCategory {
+                    font-size: 13px;
+                    font-weight: bold;
+                    font-style: italic;
+                    color: gray;
+                }
+    
+                .eateryAddress {
+                    font-size: 11px;
+                    color: gray;
+                }
+            }
+        }
+    }
+}

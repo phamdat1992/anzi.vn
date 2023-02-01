@@ -1,0 +1,260 @@
+.management {
+    .tablePage {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+    
+        .header {
+            height: 200px;
+            position: relative;
+            width: 100%;
+            top: 0px;
+            overflow: hidden;
+            background-image: url("../../../../asset/image/menu-header-background.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+    
+            .back {
+                position: relative;
+                height: inherit;
+                width: 120px;
+                z-index: 3;
+    
+                .backIcon {
+                    margin: auto;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    background-color: white;
+                    background-image: url("../../../../asset/image/small-left.png");
+                    background-repeat: no-repeat;
+                    background-position: 15px;
+                }
+            }
+    
+            .title {
+                position: absolute;
+                width: inherit;
+                height: inherit;
+                top: 0px;
+                text-align: center;
+                line-height: 200px;
+                color: white;
+                font-weight: bold;
+                font-size: 30px;
+            }
+        }
+    
+        .body {
+            width: 100%;
+            height: calc(100vh - 370px);
+            overflow-y: scroll;
+            overflow-x: hidden;
+    
+            .blurTop {
+                position: sticky;
+                height: 25px;
+                top: 0px;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                opacity: 0.8;
+                background-color: white;
+            }
+    
+            .blurBottom {
+                position: sticky;
+                height: 25px;
+                bottom: 0px;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                opacity: 0.8;
+                background-color: white;
+            }
+    
+            .tableList {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    
+        .footer {
+            position: fixed;
+            bottom: 0px;
+            width: 100vw;
+            height: 185px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+    
+            .addTable {
+                position: relative;
+                width: 80%;
+                min-width: 325px;
+                height: 85px;
+                background-color: #f2f2f2;
+                border-radius: 20px;
+                line-height: 85px;
+                text-align: center;
+                color: #838698;
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+.modal-content {
+    background: transparent;
+    border: none;
+
+    .newTableModal {
+        background-color: #f2f2f2;
+        border-radius: 30px;
+        border: 1px solid #88b7dd;
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .newTableName {
+                margin-top: 10px;
+                width: 80%;
+                background-color: white;
+                height: 45px;
+                border-radius: 35px;
+
+                input {
+                    width: 100%;
+                    height: inherit;
+                    border-radius: 35px;
+                    border: none;
+                    outline: none;
+                    padding: 0px 25px 0px 25px;
+                    font-size: 17px;
+
+                    &::placeholder {
+                        color: #818495;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+
+                    &:focus-visible {
+                        border: 1px solid #1576fb;
+                        outline: none;
+                        
+                        &::placeholder {
+                            color: white;
+                        }
+                    }
+                }
+            }
+            .newTableLocation {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                width: 80%;
+                background-color: white;
+                height: 45px;
+                border-radius: 35px;
+
+                input {
+                    width: 100%;
+                    height: inherit;
+                    border-radius: 35px;
+                    border: none;
+                    outline: none;
+                    padding: 0px 25px 0px 25px;
+                    font-size: 17px;
+
+                    &::placeholder {
+                        color: #818495;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+
+                    &:focus-visible {
+                        border: 1px solid #1576fb;
+                        outline: none;
+                        
+                        &::placeholder {
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            .error {
+                border: 1px solid orangered;
+
+                input {
+                    &:focus-visible {
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .footer {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            .button {
+                width: 105px;
+                height: 50px;
+                border-radius: 25px;
+                text-align: center;
+                line-height: 50px;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .cancel {
+                background-color: white;
+                color: #1876be;
+                box-shadow: -1px 2px 5px 0px #1876be;
+            }
+
+            .okie {
+                background-color: #1576fb;
+                color: white;
+                box-shadow: 1px 2px 5px 0px white;
+            }
+        }
+    }
+}
+
+@media all and (hover: hover) and (pointer: fine) {
+    .management {
+        .tablePage {
+            width: 33%;
+            min-width: 450px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+
+            .footer {
+                position: absolute;
+                width: 100%;
+            }
+        }
+    }
+}

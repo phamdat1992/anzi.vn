@@ -1,0 +1,269 @@
+.management {
+    .staffList {
+        .staffItem {
+            width: 80%;
+            min-width: 325px;
+            height: 85px;
+            background-color: #f2f2f2;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            margin: 10px 0px 10px 0px;
+        
+            .staffInfo{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+
+                .staffIcon {
+                    background-image: url("../../../../../../asset/image/staff-manage-icon.png");
+                    background-repeat: no-repeat;
+                    width: 85px;
+                    height: 85px;
+                    background-size: 40px;
+                    background-position: 20px;
+                }
+            
+                .info {
+                    margin-left: 0px;
+            
+                    .name {
+                        color: #1977b7;
+                        font-weight: bold;
+                        font-size: 20px;
+                    }
+            
+                    .email {
+                        color: #838794;
+                    }
+            
+                    .role {
+                        color: #1c77b9;
+                        font-weight: bold;
+                        font-size: 16px;
+                        font-style: italic;
+                    }
+                }
+            }
+        
+            .remove {
+                position: absolute;
+                right: 0px;
+                width: 85px;
+                height: 85px;
+                background-color: white;
+                border-radius: 0px 20px 20px 0px;
+                background-image: url("../../../../../../asset/image/close.svg");
+                background-repeat: no-repeat;
+                filter: opacity(0.5);
+                background-size: 35px;
+                background-position: 25px;
+            }
+        }
+    }
+}
+
+.modal-content {
+    background: transparent;
+    border: none;
+
+    .editStaffModal, .removeStaffModal {
+        background-color: #f2f2f2;
+        border-radius: 30px;
+        border: 1px solid #88b7dd;
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .removeInfo {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 35px 0px 35px 0px;
+            }
+
+            .editStaffName {
+                margin-top: 10px;
+                margin-bottom: 10;
+                width: 80%;
+                background-color: white;
+                height: 45px;
+                border-radius: 35px;
+
+                input {
+                    width: 100%;
+                    height: inherit;
+                    border-radius: 35px;
+                    border: none;
+                    outline: none;
+                    padding: 0px 25px 0px 25px;
+                    font-size: 17px;
+
+                    &::placeholder {
+                        color: #818495;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+
+                    &:focus-visible {
+                        border: 1px solid #1576fb;
+                        outline: none;
+                        
+                        &::placeholder {
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            .role {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                width: 80%;
+                height: 45px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                .myRole {
+                    position: relative;
+                    width: 100%;
+
+                    .switch {
+                        position: relative;
+                        display: inline-block;
+                        width: 100%;
+                        height: 45px;
+                      }
+                      
+                      /* Hide default HTML checkbox */
+                      .switch input {
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                      }
+                      
+                      /* The slider */
+                      .slider {
+                        position: absolute;
+                        cursor: pointer;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: white;
+                        -webkit-transition: .4s;
+                        transition: .4s;
+                      }
+                      
+                      .slider:before {
+                        position: absolute;
+                        content: "";
+                        height: 45px;
+                        width: 50%;
+                        background-color: white;
+                        -webkit-transition: .4s;
+                        transition: .4s;
+                        z-index: 3;
+                        box-shadow: 0px 0px 7px 0px #1576fb;
+                      }
+                      
+                      input:checked + .slider {
+                        background-color: #2196F3;
+                      }
+                      
+                      input:focus + .slider {
+                        box-shadow: 0 0 1px #2196F3;
+                      }
+                      
+                      input:checked + .slider:before {
+                        -webkit-transform: translateX(100%);
+                        -ms-transform: translateX(100%);
+                        transform: translateX(100%);
+                      }
+                      
+                      /* Rounded sliders */
+                      .slider.round {
+                        border-radius: 45px;
+                      }
+                      
+                      .slider.round:before {
+                        border-radius: 45px;
+                      }
+
+                    .roleList {
+                        position: absolute;
+                        background: transparent;
+                        z-index: 2;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        width: 100%;
+
+                        .on {
+                            color: white;
+                            font-weight: bold;
+                            line-height: 45px;
+                            margin-left: 6px;
+                            font-size: 17px;
+                        }
+
+                        .off {
+                            color: #1576fb;
+                            font-weight: bold;
+                            font-size: 17px;
+                            line-height: 45px;
+                            margin-right: 6px;
+                        }
+                    }
+                }
+            }
+
+            .error {
+                border: 1px solid orangered;
+
+                input {
+                    &:focus-visible {
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .footer {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            .button {
+                width: 105px;
+                height: 50px;
+                border-radius: 25px;
+                text-align: center;
+                line-height: 50px;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .cancel {
+                background-color: white;
+                color: #1876be;
+                box-shadow: -1px 2px 5px 0px #1876be;
+            }
+
+            .okie {
+                background-color: #1576fb;
+                color: white;
+                box-shadow: 1px 2px 5px 0px white;
+            }
+        }
+    }
+}

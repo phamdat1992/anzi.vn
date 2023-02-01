@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover, virtual-keyboard=overlays-content" />
+    <meta name="theme-color" content="#000000" />
+    <link href="%PUBLIC_URL%/manifest.json" rel="manifest">
+    <link href="/anzi.png" rel="shortcut icon" type="image/png">
+    <meta
+      name="description"
+      content="mang trải nghiệm khách hàng xuất sắc đến quán ăn của bạn"
+    />
+    
+    <script src="https://accounts.google.com/gsi/client"></script>
+    <script>
+      if ("virtualKeyboard" in navigator) {
+          navigator.virtualKeyboard.overlaysContent = true
+      }
+    </script>
+    <link href="./font/Bangers&Montserrat.css" rel="stylesheet">
+
+    <title>ănzì.vn</title>
+
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N056ES26WC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N056ES26WC');
+  </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

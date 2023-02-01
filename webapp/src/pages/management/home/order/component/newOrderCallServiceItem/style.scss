@@ -1,0 +1,69 @@
+.management {
+    .orderList {
+        .newOrderCallServiceItem {
+            width: 80%;
+            min-width: 325px;
+            height: 110px;
+            background-color: #f2f2f2;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            margin: 10px auto 10px auto;
+            border: 2px solid #fe0002;
+
+            .tableInfo {
+                display: flex;
+                flex-direction: column;
+                margin-left: 20px;
+
+                .tableName {
+                    color: #1976be;
+                    font-weight: bold;
+                    font-size: 35px;
+                }
+
+                .tableLocation {
+                    color: #1973b9;
+                    font-size: 16px;
+                    margin-top: -10px;
+                }
+
+                .time {
+                    color: #b8bbc1;
+                    font-style: italic;
+                    margin-top: 5px;
+                }
+            }
+
+            .dishStatus {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-right: 20px;
+
+                .orderType {
+                    color: #1e72b4;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+
+                .confirm {
+                    width: -webkit-fill-available;
+                    height: 50px;
+                    border-radius: 26px;
+                    background-color: #1977fb;
+                    color: white;
+                    line-height: 50px;
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 17px;
+                    box-shadow: 2px 2px 1px 3px lightgrey;
+                }
+            }
+        }
+    }
+}

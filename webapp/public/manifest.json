@@ -1,0 +1,11 @@
+{
+  "name": "ănzì.vn",
+  "short_name": "ănzì.vn",
+  "icons": [
+    {
+      "src": "anzi.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    }
+  ]
+}

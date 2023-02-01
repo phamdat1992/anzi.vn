@@ -1,0 +1,47 @@
+.diner {
+    .dishList {
+        .dish {
+            flex-direction: row;
+            justify-content: space-between;
+            display: flex;
+            margin-top: 15px;
+        
+            .dishInfo {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+        
+                .image {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 15px;
+                    background-color: #e8f7fe;
+                }
+                .info {
+                    margin-left: 20px;
+        
+                    .name {
+                        color: #1a76bc;
+                        font-size: 18px;
+                    }
+                    .prize {
+                        color: #848693;
+                        font-size: 17px;
+                    }
+                }
+            }
+        
+            .status {
+                line-height: 70px;
+                color: #838692;
+                font-style: italic;
+                font-size: 17px;
+            }
+
+            .warning {
+                color: orange;
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+.placePage {
+    .commentList {
+        .commentItem {
+            .userInfo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 15px;
+                margin-top: 20px;
+    
+                .userIcon {
+                    width: 30px;
+                    height: 30px;
+                    background-color: lightgray;
+                    border-radius: 30px;
+                    position: relative;
+    
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+    
+                .userName {
+                    font-size: 14px;
+                    color: gray;
+                    margin-left: 10px;
+                }
+            }
+    
+            .time {
+                font-size: 12px;
+                font-style: italic;
+                color: gray;
+            }
+    
+            .commentContent {
+                font-size: 14px;
+                text-align: justify;
+            }
+        }
+    }
+}

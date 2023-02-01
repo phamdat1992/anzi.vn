@@ -1,0 +1,192 @@
+.management {
+    .tableList {
+        .tableItem {
+            width: 80%;
+            min-width: 325px;
+            height: 85px;
+            background-color: #f2f2f2;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            margin: 10px 0px 10px 0px;
+        
+            .tableInfo {
+                display: flex;
+                align-items: center;
+                width: 100%;
+
+                .tableIcon {
+                    background-image: url("../../../../../../asset/image/table-manage-icon.png");
+                    background-repeat: no-repeat;
+                    width: 85px;
+                    height: 85px;
+                    background-size: 40px;
+                    background-position: 20px;
+                }
+            
+                .info {
+                    margin-left: 0px;
+            
+                    .name {
+                        color: #1977b7;
+                        font-weight: bold;
+                        font-size: 20px;
+                    }
+            
+                    .location {
+                        color: #1976ba;
+                        font-size: 16px;
+                    }
+                }
+            }
+        
+            .remove {
+                position: absolute;
+                right: 0px;
+                width: 85px;
+                height: 85px;
+                background-color: white;
+                border-radius: 0px 20px 20px 0px;
+                background-image: url("../../../../../../asset/image/close.svg");
+                background-repeat: no-repeat;
+                filter: opacity(0.5);
+                background-size: 35px;
+                background-position: 25px;
+                z-index: 10;
+            }
+        }
+    }
+}
+
+.modal-content {
+    background: transparent;
+    border: none;
+
+    .editTableModal, .removeTableModal {
+        background-color: #f2f2f2;
+        border-radius: 30px;
+        border: 1px solid #88b7dd;
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .removeInfo {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 35px 0px 35px 0px;
+            }
+
+            .editTableName {
+                margin-top: 10px;
+                margin-bottom: 10;
+                width: 80%;
+                background-color: white;
+                height: 45px;
+                border-radius: 35px;
+
+                input {
+                    width: 100%;
+                    height: inherit;
+                    border-radius: 35px;
+                    border: none;
+                    outline: none;
+                    padding: 0px 25px 0px 25px;
+                    font-size: 17px;
+
+                    &::placeholder {
+                        color: #818495;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+
+                    &:focus-visible {
+                        border: 1px solid #1576fb;
+                        outline: none;
+                        
+                        &::placeholder {
+                            color: white;
+                        }
+                    }
+                }
+            }
+            .editTableLocation {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                width: 80%;
+                background-color: white;
+                height: 45px;
+                border-radius: 35px;
+
+                input {
+                    width: 100%;
+                    height: inherit;
+                    border-radius: 35px;
+                    border: none;
+                    outline: none;
+                    padding: 0px 25px 0px 25px;
+                    font-size: 17px;
+
+                    &::placeholder {
+                        color: #818495;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+
+                    &:focus-visible {
+                        border: 1px solid #1576fb;
+                        outline: none;
+                        
+                        &::placeholder {
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            .error {
+                border: 1px solid orangered;
+
+                input {
+                    &:focus-visible {
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .footer {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            .button {
+                width: 105px;
+                height: 50px;
+                border-radius: 25px;
+                text-align: center;
+                line-height: 50px;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .cancel {
+                background-color: white;
+                color: #1876be;
+                box-shadow: -1px 2px 5px 0px #1876be;
+            }
+
+            .okie {
+                background-color: #1576fb;
+                color: white;
+                box-shadow: 1px 2px 5px 0px white;
+            }
+        }
+    }
+}
